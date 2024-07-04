@@ -8,8 +8,8 @@ $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 $conexion->beginTransaction();
 
-$sql = $conexion->prepare("INSERT INTO induccion (ingreso, dar_bienvenida, explique_organizacion, realice_recorrido, presente_trabajador, describa_brevemente, presente_grupo, propicie_ambiente, comente_condiciones, explique_mision, señale_vision, muestra_ubicacion, explique_formatos, capacite_utilizacion, explique_instrucciones, motive_trabajador, id_empleado) 
-VALUES (:ingreso, :dar_bienvenida, :explique_organizacion, :realice_recorrido, :presente_trabajador, :describa_brevemente, :presente_grupo, :propicie_ambiente, :comente_condiciones, :explique_mision, :señale_vision, :muestra_ubicacion, :explique_formatos, :capacite_utilizacion, :explique_instrucciones, :motive_trabajador, :id_empleado)");
+$sql = $conexion->prepare("INSERT INTO induccion (ingreso, dar_bienvenida, explique_organizacion, realice_recorrido, presente_trabajador, describa_brevemente, presente_grupo, propicie_ambiente, comente_condiciones, explique_mision, senale_vision, muestra_ubicacion, explique_formatos, capacite_utilizacion, explique_instrucciones, motive_trabajador, id_empleado) 
+VALUES (:ingreso, :dar_bienvenida, :explique_organizacion, :realice_recorrido, :presente_trabajador, :describa_brevemente, :presente_grupo, :propicie_ambiente, :comente_condiciones, :explique_mision, :senale_vision, :muestra_ubicacion, :explique_formatos, :capacite_utilizacion, :explique_instrucciones, :motive_trabajador, :id_empleado)");
 $sql->execute(array(
     ':ingreso'=>$tipodeingreso,
     ':dar_bienvenida'=>$darbienvenida,
