@@ -17,13 +17,9 @@
         }
     </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <div class="container-xxl" style="width: 100%; height:100%; background-color: #17AD24; padding:5px;">
-
 <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center;">
-
 </div>
 <form id="guardardatos" name="guardardatos">
 <div id="mensaje"></div>
@@ -47,7 +43,6 @@
                     })
                 })
             </script>
-
 <div style="width: 100%; height: 100%; background-color: white; border-radius: 10px; padding: 10px; font-size: 15px; margin-top: 10px;">
 <div class="containeroficial" id="contenedor">
 <div style="width: 100%; height: 100%;">
@@ -86,12 +81,13 @@
 <div>
     <h3>Tipo de movimiento:</h3>
 </div>
+<input type="hidden" name="idempleado" value="1983">
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="si">
+    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="si">
+    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault2" value="reingreso">
     <label class="form-check-label" for="flexRadioDefault2">REINGRESO</label>
 </div>
 <div class="col-md-12">
@@ -164,9 +160,6 @@
     <label class="form-check-label" for="flexCheckDefault">7. Motive al trabajador/a para que formule preguntas y aclare dudas sobre sus actividades y las necesidades o expectativas a cubrir con relación a su puesto<br><br></label>
 </div>
 </div>
-<?php
-$idempleado = 20;
-?>
 <input type="hidden" name="idempleado" value="<?php echo $idempleado ?>">
     </div>
     <div style="width: 100%; height: auto; padding: 10px; background-color: white; display: flex; justify-content: center; align-items: center;">
