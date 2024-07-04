@@ -87,11 +87,11 @@
     <h3>Tipo de movimiento:</h3>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="si">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="si">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="reingreso">
     <label class="form-check-label" for="flexRadioDefault2">REINGRESO</label>
 </div>
 <div class="col-md-12">
