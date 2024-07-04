@@ -27,7 +27,7 @@
 <img src="img\OIP.jpg" class="img-fluid" style="width:30px; height:30px; border-radius: 5px;">&nbsp;
 </div>
 <form id="guardardatos" name="guardardatos">
-<div id="mensaje"></div>
+<div id="message"></div>
 <script>
                 $("#guardardatos").on("submit", function(e) {
                     e.preventDefault();
@@ -40,20 +40,20 @@
                         contentType: false,
                         processData: false,
                         beforeSend: function(objeto) {
-                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(../imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                            $('#message').html('<div id="message" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(../imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                         },
                         success: function(data) {
-                            $("#mensaje").html(data);
+                            $("#message").html(data);
                         }
                     })
                 })
             </script>
 
 <div style="width: 100%; height: 100%; background-color: white; border-radius: 10px; padding: 10px; font-size: 15px; margin-top: 10px;">
-<div class="container" id="contenedor">
+<div class="containeroficial" id="contenedor">
 <div style="width: 100%; height: 100%;">
 
-    <div class="container">
+    <div class="containerinduccion">
 <div>
         <h2 id="h2">Guía de inducción al área y puesto de personal en el puesto</h2>
         <h2 id="h2">MEDICO ESPECIALISTA HOSPITAL</h2>
