@@ -9,9 +9,9 @@ $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 $conexion->beginTransaction();
 
 $sql = $conexion->prepare("INSERT INTO induccion (ingreso, dar_bienvenida, explique_organizacion, realice_recorrido, presente_trabajador, describa_brevemente, presente_grupo, propicie_ambiente, comente_condiciones, explique_mision, señale_vision, muestra_ubicacion, explique_formatos, capacite_utilizacion, explique_instrucciones, motive_trabajador, id_empleado) 
-VALUES (:ingreso, :reingreso, :dar_bienvenida, :explique_organizacion, :realice_recorrido, :presente_trabajador, :describa_brevemente, :presente_grupo, :propicie_ambiente, :comente_condiciones, :explique_mision, :señale_vision, :muestra_ubicacion, :explique_formatos, :capacite_utilizacion, :explique_instrucciones, :motive_trabajador, :id_empleado)");
+VALUES (:ingreso, :dar_bienvenida, :explique_organizacion, :realice_recorrido, :presente_trabajador, :describa_brevemente, :presente_grupo, :propicie_ambiente, :comente_condiciones, :explique_mision, :señale_vision, :muestra_ubicacion, :explique_formatos, :capacite_utilizacion, :explique_instrucciones, :motive_trabajador, :id_empleado)");
 $sql->execute(array(
-    ':ingreso'=>$ingreso,
+    ':ingreso'=>$tipodeingreso,
     ':dar_bienvenida'=>$darbienvenida,
     ':explique_organizacion'=>$expliqueorganizacion,
     ':realice_recorrido'=>$realicerecorrido,
