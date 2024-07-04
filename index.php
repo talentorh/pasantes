@@ -82,14 +82,11 @@
     <h3>Tipo de movimiento:</h3>
 </div>
 <input type="hidden" name="idempleado" value="1983">
-<input type="hidden" name="idempleado" value="1983">
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="ingreso">
     <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault2" value="reingreso">
     <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault2" value="reingreso">
     <label class="form-check-label" for="flexRadioDefault2">REINGRESO</label>
 </div>
@@ -164,7 +161,6 @@
 </div>
 </div>
 
-<input type="hidden" name="idempleado" value="<?php echo $idempleado ?>">
     </div>
     <div style="width: 100%; height: auto; padding: 10px; background-color: white; display: flex; justify-content: center; align-items: center;">
         <input type="submit" class="btn btn-success" value="Guardar" id="guardar" style="background-color: #17AD24">
