@@ -7,34 +7,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+    <style>
+        #h2 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
     <div class="container">
 <div>
-        <h2>Guía de inducción al área y puesto de personal en el puesto</h2>
-        <h2>MEDICO ESPECIALISTA HOSPITAL</h2>
+        <h2 id="h2">Guía de inducción al área y puesto de personal en el puesto</h2>
+        <h2 id="h2">MEDICO ESPECIALISTA HOSPITAL</h2>
     </div>
-    <div>
+<div class="row">
+<div class="col-md-4">
         <label>Nombre del trabajador:</label>
-        <input type="text">
+        <input type="text" class="form-control">
 </div>
-<div>
+<div class="col-md-4">
     <label>CURP:</label>
-    <input type="text">
+    <input type="text" class="form-control">
 </div>
-<div>
+<div class="col-md-4">
     <label>Puesto:</label>
-    <input type="text">
+    <input type="text" class="form-control">
 </div>
-<div>
+<div class="col-md-4">
     <label>Adscripcion:</label>
-    <input type="text">
+    <input type="text" class="form-control">
 </div>
-<div>
+<div class="col-md-4">
     <label>RFC:</label>
-    <input type="text">
+    <input type="text" class="form-control">
 </div>
-<div>
+<div class="col-md-4">
     <label>CLUES:</label>
-    <input type="text">
+    <input type="text" class="form-control">
 </div>
 </div>
 <div class="container2">
@@ -42,11 +49,11 @@
     <h3>Tipo de movimiento:</h3>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">NUEVO INGRESO</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <input class="form-check-input" type="radio" value="" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">REINGRESO</label>
 </div>
 <div>
