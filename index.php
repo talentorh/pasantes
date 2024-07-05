@@ -82,7 +82,7 @@
 <div>
     <h3>Tipo de movimiento:</h3>
 </div>
-<input type="hidden" name="idempleado" value="45">
+<input type="hidden" name="idempleado" value="55">
 <div class="form-check">
     <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="Ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
