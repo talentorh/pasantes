@@ -39,9 +39,10 @@
                         },
                         success: function(data) {
                             $("#mensaje").html(data);
+                                    window.location.href = "consulta_pdf.php";
                         }
-                    })
-                })
+                    });
+                });
             </script>
 <div style="width: 100%; height: 100%; background-color: white; border-radius: 10px; padding: 10px; font-size: 15px; margin-top: 10px;">
 <div class="containeroficial" id="contenedor">
@@ -81,7 +82,7 @@
 <div>
     <h3>Tipo de movimiento:</h3>
 </div>
-<input type="hidden" name="idempleado" value="1983">
+<input type="hidden" name="idempleado" value="45">
 <div class="form-check">
     <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="Ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
@@ -163,7 +164,7 @@
 
     </div>
     <div style="width: 100%; height: auto; padding: 10px; background-color: white; display: flex; justify-content: center; align-items: center;">
-        <input type="submit" class="btn btn-success" value="Guardar" id="guardar" style="background-color: #17AD24">
+    <input type="submit" class="btn btn-success" value="Guardar" id="guardar" style="background-color: #17AD24">
             </div>
             </form>
         </div>

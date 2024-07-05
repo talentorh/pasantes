@@ -92,8 +92,5 @@ $pdf->cell(78,5,mb_convert_encoding('6. Explique las instrucciones básicas de s
 $pdf->cell(5,5,$registro['motive_trabajador'],1,0,'C',0);
 $pdf->multicell(186,5,mb_convert_encoding('7. Motive al trabajador/a para que formule preguntas y aclare dudas sobre sus actividades y las necesidades o expectativas a cubrir con relación a su puesto','ISO-8859-1','UTF-8'),0,'L',0);
 
-
-
-
-$pdf->Output('Formato de guía de inducción.pdf', 'I');
+$pdf->Output('Formato.pdf', 'I');
 ?>

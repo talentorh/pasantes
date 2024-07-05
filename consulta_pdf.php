@@ -1,7 +1,7 @@
 <?php
 require 'clases/conexion.php';
 $conexion = new Conexion();
-$id = 1983;
+$id = 45;
 $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 $conexion->beginTransaction();
