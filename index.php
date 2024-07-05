@@ -83,80 +83,80 @@
 </div>
 <input type="hidden" name="idempleado" value="1983">
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="ingreso">
+    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="Ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault2" value="reingreso">
+    <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault2" value="Reingreso">
     <label class="form-check-label" for="flexRadioDefault2">REINGRESO</label>
 </div>
 <div class="col-md-12">
     <strong>Inducción a la Unidad de adscripción:</strong>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="darbienvenida" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="darbienvenida" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">1. Dar la bienvenida a la trabajador/a de nuevo ingreso a Servicios de Salud IMSS-BIENESTAR</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="expliqueorganizacion" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="expliqueorganizacion" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">2. Explique la organización de la Unidad con el apoyo del organigrama</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="realicerecorrido" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="realicerecorrido" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">3. Realice un recorrido por las instalaciones de la Unidad</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="presentetrabajador" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="presentetrabajador" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">4. Presente al trabajador/a con los y las responsables de otras áreas, en caso de tener trato con ellos</label>
 </div>
 <div class="col-md-12">
     <strong>Inducción al área de trabajo</strong>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="describabreve" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="describabreve" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">1. Describa brevemente el área de trabajo y los procesos en los que están involucrados</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="presentegrupo" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="presentegrupo" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">2. Presente a las compañeras y compañeros del grupo de trabajo</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="propicieambiente" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="propicieambiente" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">3. Propicie un ambiente de cordialidad e integración de equipo</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="comentecondiciones" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="comentecondiciones" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">4. Comente condiciones generales del ttrabajo de IMSS-BIENESTAR</label>
 </div>
 <div class="col-md-12"> 
     <strong>Inducción al puesto</strong>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="expliquemision" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="expliquemision" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">1. Explique la misión del puesto</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="senalevision" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="senalevision" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">2. Señale la visión que se desea del puesto</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="muestraubicacion" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="muestraubicacion" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">3. Muestra la ubicación del puesto de trabajo y su correspondencia estructural</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="expliqueformatos" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="expliqueformatos" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">4. Explique los formatos y el uso de estos</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="capaciteutilizacion" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="capaciteutilizacion" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">5. Capacite en la utilización de equipos y materiales de trabajo</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="expliqueinstrucciones" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="expliqueinstrucciones" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">6. Explique las instrucciones básicas de seguridad e higiene</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="motivetrabajador" type="checkbox" value="si" id="flexCheckDefault">
+    <input class="form-check-input" name="motivetrabajador" type="checkbox" value="Si" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">7. Motive al trabajador/a para que formule preguntas y aclare dudas sobre sus actividades y las necesidades o expectativas a cubrir con relación a su puesto<br><br></label>
 </div>
 </div>
