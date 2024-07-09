@@ -39,7 +39,10 @@
                         },
                         success: function(data) {
                             $("#mensaje").html(data);
-                                    window.location.href = "consulta_pdf.php";
+                            setTimeout(function() {
+                            let id_empleado = $("#id_empleado").val();
+                                    window.location.href = 'consulta_pdf.php?id='+id_empleado;
+                                }, 2000);
                         }
                     });
                 });
@@ -53,6 +56,7 @@
         <h2 id="h2">MEDICO ESPECIALISTA HOSPITAL</h2>
     </div>
 <div class="row">
+<input type="hidden" name="idempleado" id="id_empleado" value="75">
 <div class="col-md-4">
         <label>Nombre del trabajador:</label>
         <input type="text" class="form-control">
@@ -82,7 +86,7 @@
 <div>
     <h3>Tipo de movimiento:</h3>
 </div>
-<input type="hidden" name="idempleado" value="65">
+
 <div class="form-check">
     <input class="form-check-input" type="radio" name="tipodeingreso" id="flexRadioDefault1" value="Ingreso">
     <label class="form-check-label" for="flexRadioDefault1">INGRESO<label>

@@ -89,7 +89,7 @@ $pdf->cell(5,5,$registros['capacite_utilizacion'],1,0,'C',0);
 $pdf->cell(80,5,mb_convert_encoding('5. Capacite en la utilización de equipos y materiales de trabajo','ISO-8859-1','UTF-8'),0,1,'L',0);
 $pdf->cell(5,5,$registros['explique_instrucciones'],1,0,'C',0);
 $pdf->cell(78,5,mb_convert_encoding('6. Explique las instrucciones básicas de seguridad e higiene','ISO-8859-1','UTF-8'),0,1,'L',0);
-$pdf->cell(5,5,$registro['motive_trabajador'],1,0,'C',0);
+$pdf->cell(5,5,$registros['motive_trabajador'],1,0,'C',0);
 $pdf->multicell(186,5,mb_convert_encoding('7. Motive al trabajador/a para que formule preguntas y aclare dudas sobre sus actividades y las necesidades o expectativas a cubrir con relación a su puesto','ISO-8859-1','UTF-8'),0,'L',0);
 
 $pdf->Output('Formato.pdf', 'I');
