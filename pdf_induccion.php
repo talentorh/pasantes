@@ -91,6 +91,58 @@ $pdf->cell(5,5,$registros['explique_instrucciones'],1,0,'C',0);
 $pdf->cell(78,5,mb_convert_encoding('6. Explique las instrucciones básicas de seguridad e higiene','ISO-8859-1','UTF-8'),0,1,'L',0);
 $pdf->cell(5,5,$registro['motive_trabajador'],1,0,'C',0);
 $pdf->multicell(186,5,mb_convert_encoding('7. Motive al trabajador/a para que formule preguntas y aclare dudas sobre sus actividades y las necesidades o expectativas a cubrir con relación a su puesto','ISO-8859-1','UTF-8'),0,'L',0);
+$pdf->SetFont('Arial','B',8);
+$pdf->ln(10);
+$pdf->cell(10);
+$pdf->cell(90,7,mb_convert_encoding('FECHA DE INDUCCIÓN:','ISO-8859-1','UTF-8'),1,0,'L',0);
+$pdf->SetXY(60, 205);  
+$pdf->SetFont('Arial','',8);
+$pdf->cell(45,7,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0); //recuadro para poner la fecha
+$pdf->SetXY(110, 205);  
+$pdf->SetFont('Arial','B',8);
+$pdf->cell(90,7,mb_convert_encoding('DURACIÓN EN HORAS:','ISO-8859-1','UTF-8'),1,0,'L',0);
+$pdf->SetXY(145,205);  
+$pdf->SetFont('Arial','',8);
+$pdf->cell(55,7,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,1,'C',0);//recuadro para poner la duración
+$pdf->SetFont('Arial','',8);
+/*$pdf->cell(15);
+$pdf->SetXY(25,212);
+$pdf->Cell(80, 30, mb_convert_encoding('Impartió:','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->SetXY(105, 228);  
+$pdf->cell(80,5,mb_convert_encoding('tyy','ISO-8859-1','UTF-8'),0,0,'C',0); //recuadro para poner quién impartió
+$pdf->SetXY(25, 232);  
+$pdf->Cell(80,5, mb_convert_encoding('hola'),1,0,'C',0);
+$pdf->SetXY(40,235);
+$pdf->cell(50,10,'Nombre, cargo y firma.',0,0,'C',0);
+$pdf->SetXY(105,212);
+$pdf->Cell(80, 25, mb_convert_encoding('Recibío:','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->SetXY(60, 5);  
+$pdf->cell(50,10,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,0,'C',0); //recuadro para poner quién recibío
+$pdf->SetXY(105, 232); 
+$pdf->Cell(80, 5, mb_convert_encoding('__________________'),0,0,'C',0);
+$pdf->SetXY(120,235);
+$pdf->cell(50,10,'Nombre, cargo y firma.',0,1,'C',0);*/
+
+$recuadro1X = 20;
+$recuadro1Y = 212;
+$pdf->SetFont('Arial', '', 8);
+$pdf->Rect($recuadro1X, $recuadro1Y, 90, 35, 'D');
+$pdf->Text($recuadro1X + 40, $recuadro1Y + 3, mb_convert_encoding('Impartío:','ISO-8859-1','UTF-8'));
+$pdf->Text($recuadro1X + 25, $recuadro1Y + 25, mb_convert_encoding('','ISO-8859-1','UTF-8')); //coloca el nombre del empleado que imparte
+$pdf->Text($recuadro1X + 30, $recuadro1Y + 30, mb_convert_encoding('','ISO-8859-1','UTF-8')); //coloca su puesto
+$pdf->Text($recuadro1X + 15, $recuadro1Y + 30, '______________________________________');
+$pdf->Text($recuadro1X + 33, $recuadro1Y + 33, 'Nombre, cargo y firma');
+
+//recuadro dos
+$recuadro1X = 110;
+$recuadro1Y = 212;
+$pdf->SetFont('Arial', '', 8);
+$pdf->Rect($recuadro1X, $recuadro1Y, 90, 35, 'D');
+$pdf->Text($recuadro1X + 40, $recuadro1Y + 3, mb_convert_encoding('Recibió:','ISO-8859-1','UTF-8'));
+$pdf->Text($recuadro1X + 28, $recuadro1Y + 25, mb_convert_encoding('','ISO-8859-1','UTF-8')); //coloca el nombre del empleado que recibe
+$pdf->Text($recuadro1X + 33, $recuadro1Y + 30, mb_convert_encoding('','ISO-8859-1','UTF-8')); //coloca su puesto
+$pdf->Text($recuadro1X + 15, $recuadro1Y + 30, '______________________________________');
+$pdf->Text($recuadro1X + 33, $recuadro1Y + 33, 'Nombre, cargo y firma');
 
 $pdf->Output('Formato.pdf', 'I');
 ?>
