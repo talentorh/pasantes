@@ -123,6 +123,7 @@ $pdf->Cell(80, 5, mb_convert_encoding('__________________'),0,0,'C',0);
 $pdf->SetXY(120,235);
 $pdf->cell(50,10,'Nombre, cargo y firma.',0,1,'C',0);*/
 
+//recuadro uno
 $recuadro1X = 20;
 $recuadro1Y = 212;
 $pdf->SetFont('Arial', '', 8);
