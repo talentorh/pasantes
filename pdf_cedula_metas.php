@@ -19,7 +19,11 @@ class PDF extends FPDF{
 $pdf = new PDF("L", "mm", "LETTER");
 $pdf->AliasNbPages();
 $pdf->AddPage();
+$pdf->SetLineWidth(0.5);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10, 24, 171, 24);
 $pdf->SetFont('Arial','B',8);
+$pdf->SetLineWidth(0);
 $pdf->cell(258,5,'DATOS DEL EVALUADOR',0,1,'L',0);
 $pdf->cell(30,5,'No. NOMINA',0,0,'L',0);
 $pdf->SetFont('Arial','',8);
@@ -173,7 +177,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_multicell5a = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+    /*->//dibujar la linea
+    $pdf->SetLineWidth(0.5);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
+    $pdf->SetLineWidth(0);*/
+    /*
     $pdf->ln(3);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
@@ -288,7 +297,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_multicell5a = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+    /*->//dibujar la linea
+    $pdf->SetLineWidth(0.5);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
+    $pdf->SetLineWidth(0);*/
+      /*
     $pdf->ln(3);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
@@ -403,8 +417,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_multicell5b = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
-    $pdf->ln(3);
+    /*->//dibujar la linea
+    $pdf->SetLineWidth(0.5);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
+    $pdf->SetLineWidth(0);*/
+    /*
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
     $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);    
@@ -518,7 +536,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -633,7 +656,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
+    $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -748,7 +776,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -863,7 +896,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -978,7 +1016,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1093,7 +1136,13 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
+      $pdf->SetLineWidth(0);
+      */
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1208,7 +1257,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5d = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1d + 3, $x_multicell1d, $y_multicell1d + 3);
+      $pdf->SetLineWidth(0);;*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1324,7 +1378,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1439,7 +1498,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1554,7 +1618,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1669,7 +1738,13 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5d = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1d + 3, $x_multicell1d, $y_multicell1d + 3);
+      $pdf->SetLineWidth(0);
+      */
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1784,7 +1859,12 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell5e = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      $pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+      /*->//dibujar la linea
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(268, $y_multicell1e + 3, $x_multicell1e, $y_multicell1e + 3);
+      $pdf->SetLineWidth(0);*/
+      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
@@ -1796,6 +1876,10 @@ $conexion->close();
 
 //EMPIEZAN LAS METAS FUNCIONALES ES FIJA Y ES 1
 $pdf->AddPage();
+$pdf->SetLineWidth(0.5);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10, 24, 268, 24);
+$pdf->SetLineWidth(0);
 $pdf->SetFillColor(3,19,100);
 $pdf->SetTextColor(255, 255, 255);
 $pdf->cell(258,7,'Metas funcionales',0,1,'C',1);
@@ -1903,7 +1987,11 @@ $x_multicell10 = $pdf->getX();
 $y_multicell10 = $pdf->getY();
 $pdf->SetFont('Arial','B',8);
 $pdf->ln(3);
-$pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+//dibujar la linea
+$pdf->SetLineWidth(0.5);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(268, $y_multicell6 + 3, $x_multicell6, $y_multicell6 + 3);
+$pdf->SetLineWidth(0);
 $pdf->ln(3);
 $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
 $pdf->SetFont('Arial','',8);
@@ -1911,6 +1999,10 @@ $pdf->cell(15,5,'',1,1,'C',0);
 
 //INICIAN LAS METAS COLECTIVAS Y ES FIJA ES 1
 $pdf->AddPage();
+$pdf->SetLineWidth(0.5);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10, 24, 268, 24);
+$pdf->SetLineWidth(0);
 $pdf->SetFillColor(3,19,100);
 $pdf->SetTextColor(255, 255, 255);
 $pdf->cell(258,7,'Metas colectivas',0,1,'C',1);
@@ -2018,7 +2110,11 @@ $x_multicell15 = $pdf->getX();
 $y_multicell15 = $pdf->getY();
 $pdf->SetFont('Arial','B',8);
 $pdf->ln(3);
-$pdf->cell(258,5,'-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------',0,1,'C',0);
+//dibujar la linea
+$pdf->SetLineWidth(0.5);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(268, $y_multicell11 + 3, $x_multicell11, $y_multicell11 + 3);
+$pdf->SetLineWidth(0);
 $pdf->ln(3);
 $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
 $pdf->SetFont('Arial','',8);
