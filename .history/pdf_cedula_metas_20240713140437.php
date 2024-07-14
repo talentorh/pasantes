@@ -58,13 +58,8 @@ $conexion->beginTransaction();
 $sql = $conexion->prepare("SELECT * FROM descripcionesmetas2023 WHERE id_empleado = $id");
 $resultado = $conexion->consulta($sql);
 
-$meta1 = [''];
-$meta2 = [''];
-$meta3 = [''];
-$meta4 = [''];
-$meta5 = [''];
-
-if ($resultado = $meta1) { //->ejecución de código si tiene una meta
+$metas = [];
+if ($resultado->num_rows > 0) { //->ejecución de código si tiene una meta
     //meta individual 1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -179,7 +174,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $pdf->SetFont('Arial','',8);
     $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
     }
-} else if($resultado = $meta2){ //->ejeución si tiene dos metas
+} else if(){ //->ejeución si tiene dos metas
     //meta individual1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -409,7 +404,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $pdf->SetFont('Arial','',8);
     $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);    
 }
-    else if($resultado = $meta3){ //->condicional si tiene tres metas
+    else if(){ //->condicional si tiene tres metas
       //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
@@ -754,7 +749,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->SetFont('Arial','',8);
       $pdf->cell(15,5,$datos['nivelescumplimiento3'],1,1,'C',0);
     }
-      else if($resultado = $meta4){ //ejecución si tiene 4 metas
+      else if(){ //ejecución si tiene 4 metas
         //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
@@ -1215,7 +1210,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(15,5,$datos['nivelescumplimiento4'],1,1,'C',0);
       }
 
-      else if($resultado = $meta5){ //ejecucion si tiene 5 metas
+      else if(){ //ejecucion si tiene 5 metas
        //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
