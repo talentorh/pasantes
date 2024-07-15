@@ -1876,11 +1876,11 @@ $x_cellbb = $pdf->getX();
 $y_cellbb = $pdf->getY();
 //alinea el contenido del eje con el contenido de la fecha
 $pdf->setXY($x_cellaa - 20, $y_cellaa + 5);//parte del titulo eje
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
 $x_multicellcc = $pdf->getX();
 $y_multicellcc = $pdf->getY();
 $pdf->setXY($x_cellbb + 218, $y_cellbb + 0);//parte del titulo de fecha
-$pdf->cell(40,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,1,'C',0);
+$pdf->cell(40,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,1,'C',0);
 $x_celldd = $pdf->getX();
 $y_celldd = $pdf->getY();
 //alinea titulo linea con titulo unidad 
@@ -1894,11 +1894,11 @@ $x_cellff = $pdf->getX();
 $y_cellff = $pdf->getY();
 //alinea contenido de linea con contenido de unidad de medida
 $pdf->setXY($x_cellee - 36, $y_cellee + 5);//parte del titulo linea
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicellgg = $pdf->getX();
 $y_multicellgg = $pdf->getY();
 $pdf->setXY($x_cellff + 218, $y_cellff + 0);//parte del titulo de unidad
-$pdf->cell(40,5,'',1,1,'C',0);
+$pdf->cell(40,5,$datos[''],1,1,'C',0);
 $x_cellhh = $pdf->getX();
 $y_cellhh = $pdf->getY();
 //alinea titulo de meta con titulo de ponderacion
@@ -1912,7 +1912,7 @@ $x_celljj = $pdf->getX();
 $y_celljj = $pdf->getY();
 //alinea contenido de meta con contenido de ponderacion
 $pdf->setXY($x_cellii - 8, $y_cellii + 5);//parte del titulo de meta
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicellkk = $pdf->getX();
 $y_multicellkk = $pdf->getY();
 $pdf->setXY($x_celljj + 218, $y_celljj + 0);//parte del titulo de ponderación
@@ -1925,7 +1925,7 @@ $pdf->cell(13,5,mb_convert_encoding('Indicador','ISO-8859-1','UTF-8'),0,1,'L',0)
 $x_cellnn = $pdf->getX();
 $y_cellnn = $pdf->getY();
 $pdf->setXY($x_cellnn + 0, $y_cellnn + 0);//partir del titulo de indicador
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicelloo = $pdf->getX();
 $y_multicelloo = $pdf->getY();
 //niveles de cumplimiento
@@ -1942,27 +1942,27 @@ $pdf->cell(48,5,'Nivel de cumplimiento satisfecho',0,0,'L',0);
 $pdf->cell(4);
 $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
 //multicell6
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell6 = $pdf->getX();
 $y_multicell6 = $pdf->getY();
 //multicell7
 $pdf->setXY($x_multicell6 + 53, $y_multicell6 - 5);//parte de la multicell6
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell7 = $pdf->getX();
 $y_multicell7 = $pdf->getY();
 //multicell8
 $pdf->setXY($x_multicell7 + 106, $y_multicell7 - 5);//parte de la multicell7
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell8 = $pdf->getX();
 $y_multicell8 = $pdf->getY();
 //multicell9
 $pdf->setXY($x_multicell8 + 159, $y_multicell8 - 5);//parte de la multicell8
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell9 = $pdf->getX();
 $y_multicell9 = $pdf->getY();
 //multicell10
 $pdf->setXY($x_multicell9 + 211, $y_multicell9 - 5);//parte de la multicell9
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell10 = $pdf->getX();
 $y_multicell10 = $pdf->getY();
 $pdf->SetFont('Arial','B',8);
@@ -1975,7 +1975,7 @@ $pdf->SetLineWidth(0);
 $pdf->ln(3);
 $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
 $pdf->SetFont('Arial','',8);
-$pdf->cell(15,5,'',1,1,'C',0);
+$pdf->cell(15,5,$datos[''],1,1,'C',0);
 
 //INICIAN LAS METAS COLECTIVAS Y ES FIJA ES 1
 $pdf->AddPage();
@@ -1999,11 +1999,11 @@ $x_cell17 = $pdf->getX();
 $y_cell17 = $pdf->getY();
 //alinea el contenido del eje con el contenido de la fecha
 $pdf->setXY($x_cell16 - 20, $y_cell16 + 5);//parte del titulo eje
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
 $x_multicell18 = $pdf->getX();
 $y_multicell18 = $pdf->getY();
 $pdf->setXY($x_cell17 + 218, $y_cell17 + 0);//parte del titulo de fecha
-$pdf->cell(40,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,1,'C',0);
+$pdf->cell(40,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,1,'C',0);
 $x_cell19 = $pdf->getX();
 $y_cell19 = $pdf->getY();
 //alinea titulo linea con titulo unidad 
@@ -2017,11 +2017,11 @@ $x_cell21 = $pdf->getX();
 $y_cell21 = $pdf->getY();
 //alinea contenido de linea con contenido de unidad de medida
 $pdf->setXY($x_cell20 - 36, $y_cell20 + 5);//parte del titulo linea
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicell22 = $pdf->getX();
 $y_multicell22 = $pdf->getY();
 $pdf->setXY($x_cell21 + 218, $y_cell21 + 0);//parte del titulo de unidad
-$pdf->cell(40,5,'',1,1,'C',0);
+$pdf->cell(40,5,$datos[''],1,1,'C',0);
 $x_cell23 = $pdf->getX();
 $y_cell23 = $pdf->getY();
 //alinea titulo de meta con titulo de ponderacion
@@ -2035,11 +2035,11 @@ $x_cell25 = $pdf->getX();
 $y_cell25 = $pdf->getY();
 //alinea contenido de meta con contenido de ponderacion
 $pdf->setXY($x_cell24 - 8, $y_cell24 + 5);//parte del titulo de meta
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicell26 = $pdf->getX();
 $y_multicell26 = $pdf->getY();
 $pdf->setXY($x_cell25 + 218, $y_cell25 + 0);//parte del titulo de ponderación
-$pdf->cell(40,5,'',1,1,'C',0);
+$pdf->cell(40,5,$datos[''],1,1,'C',0);
 $x_cell27 = $pdf->getX();
 $y_cell27 = $pdf->getY();
 //alinear titulo de indicador con contenido de indicador
@@ -2048,7 +2048,7 @@ $pdf->cell(13,5,mb_convert_encoding('Indicador','ISO-8859-1','UTF-8'),0,1,'L',0)
 $x_cell28 = $pdf->getX();
 $y_cell28 = $pdf->getY();
 $pdf->setXY($x_cell28 + 0, $y_cell28 + 0);//partir del titulo de indicador
-$pdf->multicell(213,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(213,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'C',0);
 $x_multicell29 = $pdf->getX();
 $y_multicell29 = $pdf->getY();
 //niveles de cumplimiento
@@ -2065,27 +2065,27 @@ $pdf->cell(48,5,'Nivel de cumplimiento satisfecho',0,0,'L',0);
 $pdf->cell(4);
 $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
 //multicell11
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell11 = $pdf->getX();
 $y_multicell11 = $pdf->getY();
 //multicell12
 $pdf->setXY($x_multicell11 + 53, $y_multicell11 - 5);//parte de la multicell11
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell12 = $pdf->getX();
 $y_multicell12 = $pdf->getY();
 //multicell13
 $pdf->setXY($x_multicell12 + 106, $y_multicell12 - 5);//parte de la multicell12
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell13 = $pdf->getX();
 $y_multicell13 = $pdf->getY();
 //multicell14
 $pdf->setXY($x_multicell13 + 159, $y_multicell13 - 5);//parte de la multicell13
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell14 = $pdf->getX();
 $y_multicell14 = $pdf->getY();
 //multicell15
 $pdf->setXY($x_multicell14 + 211, $y_multicell14 - 5);//parte de la multicell14
-$pdf->multicell(45,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'L',0);
+$pdf->multicell(45,5,mb_convert_encoding($datos[''],'ISO-8859-1','UTF-8'),1,'L',0);
 $x_multicell15 = $pdf->getX();
 $y_multicell15 = $pdf->getY();
 $pdf->SetFont('Arial','B',8);
@@ -2098,7 +2098,7 @@ $pdf->SetLineWidth(0);
 $pdf->ln(3);
 $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
 $pdf->SetFont('Arial','',8);
-$pdf->cell(15,5,'',1,1,'C',0);
+$pdf->cell(15,5,$datos[''],1,1,'C',0);
 
 //comentarios finales sobre las metas
 $pdf->AddPage();
@@ -2107,24 +2107,24 @@ $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE DURANTE EL PROCESO DE CAPTURA',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentario'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE EN EL PROCESO DE SEGUIMIENTO',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentariojefe'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(90,5,mb_convert_encoding('COMENTARIO DEL JEFE EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioJefeResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(82);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(95,5,mb_convert_encoding('COMENTARIO DEL COLABORADOR EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->Output('I','formato.pdf');
 ?>

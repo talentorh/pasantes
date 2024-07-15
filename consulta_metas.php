@@ -4,7 +4,7 @@ require 'clases/conexion.php';
 
 try {
     $conexion = new Conexion();
-    $id = 33;
+    $id = 44;
 
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
