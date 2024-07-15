@@ -51,24 +51,20 @@ $pdf->cell(30,5,'PUESTO',0,0,'L',0);
 $pdf->SetFont('Arial','',8);
 $pdf->cell(100,5,'',1,1,'C',0);
 $pdf->ln(5);
+
+/*
 //condicional para generar metas con base a la cantidad de metas que tiene cada empleado y que est+an identificados por un id de empleado
-/* 
-$conexion = new Conexion();
-$id = 1108;
-$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-$conexion->beginTransaction();
 
-$sql = $conexion->prepare("SELECT * FROM descripcionesmetas2023 WHERE id_empleado = $id");
-$resultado = $conexion->consulta($sql);
+$sql = $conexion->prepare("SELECT * FROM descripcionesmetas2023 WHERE id_empleado = :id_empleado");
+$metas = $conexion->consulta($sql);
 
-$meta1 = [''];
-$meta2 = [''];
-$meta3 = [''];
-$meta4 = [''];
-$meta5 = [''];
+$meta1 = [''];//se coloca los parámetros para validar que el empleado solo tiene una meta
+$meta2 = [''];//se colocan los parámetro para validar que el empleado tiene dos metas
+$meta3 = [''];//se colocan los parámetro para validar que el empleado tiene tres metas
+$meta4 = [''];//se colocan los parámetro para validar que el empleado tiene cuatro metas
+$meta5 = [''];//se colocan los parámetro para validar que el empleado tiene cinco metas
 
-if ($resultado = $meta1) { //->ejecución de código si tiene una meta
+if ($metas = $meta1) { //->ejecución de código si tiene una meta
     //meta individual 1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -86,11 +82,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellb1 = $pdf->getY();
     //alinea el contenido del eje con el contenido de la fecha
     $pdf->setXY($x_cella1 - 20, $y_cella1 + 5);//parte del titulo eje
-    $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+    $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
     $x_multicellc1 = $pdf->getX();
     $y_multicellc1 = $pdf->getY();
     $pdf->setXY($x_cellb1 + 218, $y_cellb1 + 0);//parte del titulo de fecha
-    $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+    $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
     $x_celld1 = $pdf->getX();
     $y_celld1 = $pdf->getY();
     //alinea titulo linea con titulo unidad 
@@ -104,11 +100,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellf1 = $pdf->getY();
     //alinea contenido de linea con contenido de unidad de medida
     $pdf->setXY($x_celle1 - 36, $y_celle1 + 5);//parte del titulo linea
-    $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicellg1 = $pdf->getX();
     $y_multicellg1 = $pdf->getY();
     $pdf->setXY($x_cellf1 + 218, $y_cellf1 + 0);//parte del titulo de unidad
-    $pdf->cell(40,5,$datos['unidadmedida1'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['unidadmedida1'],1,1,'C',0);
     $x_cellh1 = $pdf->getX();
     $y_cellh1 = $pdf->getY();
     //alinea titulo de meta con titulo de ponderacion
@@ -122,11 +118,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellj1 = $pdf->getY();
     //alinea contenido de meta con contenido de ponderacion
     $pdf->setXY($x_celli1 - 8, $y_celli1 + 5);//parte del titulo de meta
-    $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicellk1 = $pdf->getX();
     $y_multicellk1 = $pdf->getY();
     $pdf->setXY($x_cellj1 + 218, $y_cellj1 + 0);//parte del titulo de ponderación
-    $pdf->cell(40,5,$datos['ponderacionMeta1'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['ponderacionMeta1'],1,1,'C',0);
     $x_cellm1 = $pdf->getX();
     $y_cellm1 = $pdf->getY();
     //alinear titulo de indicador con contenido de indicador
@@ -135,7 +131,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $x_celln1 = $pdf->getX();
     $y_celln1 = $pdf->getY();
     $pdf->setXY($x_celln1 + 0, $y_celln1 + 0);//partir del titulo de indicador
-    $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicello1 = $pdf->getX();
     $y_multicello1 = $pdf->getY();
     //niveles de cumplimiento
@@ -152,43 +148,43 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $pdf->cell(4);
     $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
     //multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell1a = $pdf->getX();
     $y_multicell1a = $pdf->getY();
     //multicell2
     $pdf->setXY($x_multicell1a + 53, $y_multicell1a - 5);//parte de la multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell2a = $pdf->getX();
     $y_multicell2a = $pdf->getY();
     //multicell3
     $pdf->setXY($x_multicell2a + 106, $y_multicell2a - 5);//parte de la multicell2
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell3a = $pdf->getX();
     $y_multicell3a = $pdf->getY();
     //multicell4
     $pdf->setXY($x_multicell3a + 159, $y_multicell3a - 5);//parte de la multicell3
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell4a = $pdf->getX();
     $y_multicell4a = $pdf->getY();
     //multicell5
     $pdf->setXY($x_multicell4a + 211, $y_multicell4a - 5);//parte de la multicell4
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell5a = $pdf->getX();
     $y_multicell5a = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    /*->//dibujar la linea
+    //dibujar la linea
     $pdf->SetLineWidth(0.5);
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
-    $pdf->SetLineWidth(0);*/
-    /*
+    $pdf->SetLineWidth(0);
+    
     $pdf->ln(3);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
-    $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
+    $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
     }
-} else if($resultado = $meta2){ //->ejeución si tiene dos metas
+ else if($metas = $meta2){ //->ejeución si tiene dos metas
     //meta individual1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -206,11 +202,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellb1 = $pdf->getY();
     //alinea el contenido del eje con el contenido de la fecha
     $pdf->setXY($x_cella1 - 20, $y_cella1 + 5);//parte del titulo eje
-    $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+    $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
     $x_multicellc1 = $pdf->getX();
     $y_multicellc1 = $pdf->getY();
     $pdf->setXY($x_cellb1 + 218, $y_cellb1 + 0);//parte del titulo de fecha
-    $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+    $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
     $x_celld1 = $pdf->getX();
     $y_celld1 = $pdf->getY();
     //alinea titulo linea con titulo unidad 
@@ -224,11 +220,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellf1 = $pdf->getY();
     //alinea contenido de linea con contenido de unidad de medida
     $pdf->setXY($x_celle1 - 36, $y_celle1 + 5);//parte del titulo linea
-    $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicellg1 = $pdf->getX();
     $y_multicellg1 = $pdf->getY();
     $pdf->setXY($x_cellf1 + 218, $y_cellf1 + 0);//parte del titulo de unidad
-    $pdf->cell(40,5,$datos['unidadmedida1'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['unidadmedida1'],1,1,'C',0);
     $x_cellh1 = $pdf->getX();
     $y_cellh1 = $pdf->getY();
     //alinea titulo de meta con titulo de ponderacion
@@ -246,7 +242,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $x_multicellk1 = $pdf->getX();
     $y_multicellk1 = $pdf->getY();
     $pdf->setXY($x_cellj1 + 218, $y_cellj1 + 0);//parte del titulo de ponderación
-    $pdf->cell(40,5,$datos['ponderacionMeta1'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['ponderacionMeta1'],1,1,'C',0);
     $x_cellm1 = $pdf->getX();
     $y_cellm1 = $pdf->getY();
     //alinear titulo de indicador con contenido de indicador
@@ -255,7 +251,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $x_celln1 = $pdf->getX();
     $y_celln1 = $pdf->getY();
     $pdf->setXY($x_celln1 + 0, $y_celln1 + 0);//partir del titulo de indicador
-    $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicello1 = $pdf->getX();
     $y_multicello1 = $pdf->getY();
     //niveles de cumplimiento
@@ -272,41 +268,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $pdf->cell(4);
     $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
     //multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell1a = $pdf->getX();
     $y_multicell1a = $pdf->getY();
     //multicell2
     $pdf->setXY($x_multicell1a + 53, $y_multicell1a - 5);//parte de la multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell2a = $pdf->getX();
     $y_multicell2a = $pdf->getY();
     //multicell3
     $pdf->setXY($x_multicell2a + 106, $y_multicell2a - 5);//parte de la multicell2
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell3a = $pdf->getX();
     $y_multicell3a = $pdf->getY();
     //multicell4
     $pdf->setXY($x_multicell3a + 159, $y_multicell3a - 5);//parte de la multicell3
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell4a = $pdf->getX();
     $y_multicell4a = $pdf->getY();
     //multicell5
     $pdf->setXY($x_multicell4a + 211, $y_multicell4a - 5);//parte de la multicell4
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell5a = $pdf->getX();
     $y_multicell5a = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    /*->//dibujar la linea
+    //dibujar la linea
     $pdf->SetLineWidth(0.5);
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
-    $pdf->SetLineWidth(0);*/
-      /*
+    $pdf->SetLineWidth(0);
     $pdf->ln(3);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
-    $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
+    $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
 
     //meta individual 2
     $pdf->AddPage();
@@ -326,11 +321,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellb2 = $pdf->getY();
     //alinea el contenido del eje con el contenido de la fecha
     $pdf->setXY($x_cella2 - 20, $y_cella2 + 5);//parte del titulo eje
-    $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+    $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
     $x_multicellc2 = $pdf->getX();
     $y_multicellc2 = $pdf->getY();
     $pdf->setXY($x_cellb2 + 218, $y_cellb2 + 0);//parte del titulo de fecha
-    $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+    $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
     $x_celld2 = $pdf->getX();
     $y_celld2 = $pdf->getY();
     //alinea titulo linea con titulo unidad 
@@ -344,11 +339,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellf2 = $pdf->getY();
     //alinea contenido de linea con contenido de unidad de medida
     $pdf->setXY($x_celle2 - 36, $y_celle2 + 5);//parte del titulo linea
-    $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicellg2 = $pdf->getX();
     $y_multicellg2 = $pdf->getY();
     $pdf->setXY($x_cellf2 + 218, $y_cellf2 + 0);//parte del titulo de unidad
-    $pdf->cell(40,5,$datos['unidadmedida2'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['unidadmedida2'],1,1,'C',0);
     $x_cellh2 = $pdf->getX();
     $y_cellh2 = $pdf->getY();
     //alinea titulo de meta con titulo de ponderacion
@@ -362,11 +357,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $y_cellj2 = $pdf->getY();
     //alinea contenido de meta con contenido de ponderacion
     $pdf->setXY($x_celli2 - 8, $y_celli2 + 5);//parte del titulo de meta
-    $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicellk2 = $pdf->getX();
     $y_multicellk2 = $pdf->getY();
     $pdf->setXY($x_cellj2 + 218, $y_cellj2 + 0);//parte del titulo de ponderación
-    $pdf->cell(40,5,$datos['ponderacionMeta2'],1,1,'C',0);
+    $pdf->cell(40,5,$metas['ponderacionMeta2'],1,1,'C',0);
     $x_cellm2 = $pdf->getX();
     $y_cellm2 = $pdf->getY();
     //alinear titulo de indicador con contenido de indicador
@@ -375,7 +370,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $x_celln2 = $pdf->getX();
     $y_celln2 = $pdf->getY();
     $pdf->setXY($x_celln2 + 0, $y_celln2 + 0);//partir del titulo de indicador
-    $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+    $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
     $x_multicello2 = $pdf->getX();
     $y_multicello2 = $pdf->getY();
     //niveles de cumplimiento
@@ -392,40 +387,39 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
     $pdf->cell(4);
     $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
     //multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell1b = $pdf->getX();
     $y_multicell1b = $pdf->getY();
     //multicell2
     $pdf->setXY($x_multicell1b + 53, $y_multicell1b - 5);//parte de la multicell1
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell2b = $pdf->getX();
     $y_multicell2b = $pdf->getY();
     //multicell3
     $pdf->setXY($x_multicell2b + 106, $y_multicell2b - 5);//parte de la multicell2
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell3b = $pdf->getX();
     $y_multicell3b = $pdf->getY();
     //multicell4
     $pdf->setXY($x_multicell3b + 159, $y_multicell3b - 5);//parte de la multicell3
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell4b = $pdf->getX();
     $y_multicell4b = $pdf->getY();
     //multicell5
     $pdf->setXY($x_multicell4b + 211, $y_multicell4b - 5);//parte de la multicell4
-    $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+    $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
     $x_multicell5b = $pdf->getX();
     $y_multicell5b = $pdf->getY();
     $pdf->SetFont('Arial','B',8);
     $pdf->ln(3);
-    /*->//dibujar la linea
+    //dibujar la linea
     $pdf->SetLineWidth(0.5);
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
-    $pdf->SetLineWidth(0);*/
-    /*
+    $pdf->SetLineWidth(0);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
-    $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);    
+    $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);    
 }
     else if($resultado = $meta3){ //->condicional si tiene tres metas
       //meta individual1
@@ -445,11 +439,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb1 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella1 - 20, $y_cella1 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc1 = $pdf->getX();
       $y_multicellc1 = $pdf->getY();
       $pdf->setXY($x_cellb1 + 218, $y_cellb1 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld1 = $pdf->getX();
       $y_celld1 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -463,11 +457,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf1 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle1 - 36, $y_celle1 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg1 = $pdf->getX();
       $y_multicellg1 = $pdf->getY();
       $pdf->setXY($x_cellf1 + 218, $y_cellf1 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida1'],1,1,'C',0);
       $x_cellh1 = $pdf->getX();
       $y_cellh1 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -481,11 +475,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj1 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli1 - 8, $y_celli1 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk1 = $pdf->getX();
       $y_multicellk1 = $pdf->getY();
       $pdf->setXY($x_cellj1 + 218, $y_cellj1 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta1'],1,1,'C',0);
       $x_cellm1 = $pdf->getX();
       $y_cellm1 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -494,7 +488,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln1 = $pdf->getX();
       $y_celln1 = $pdf->getY();
       $pdf->setXY($x_celln1 + 0, $y_celln1 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello1 = $pdf->getX();
       $y_multicello1 = $pdf->getY();
       //niveles de cumplimiento
@@ -511,41 +505,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1a = $pdf->getX();
       $y_multicell1a = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1a + 53, $y_multicell1a - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2a = $pdf->getX();
       $y_multicell2a = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2a + 106, $y_multicell2a - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3a = $pdf->getX();
       $y_multicell3a = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3a + 159, $y_multicell3a - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4a = $pdf->getX();
       $y_multicell4a = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4a + 211, $y_multicell4a - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5a = $pdf->getX();
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
 
       //meta individual 2
       $pdf->AddPage();
@@ -565,11 +558,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb2 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella2 - 20, $y_cella2 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc2 = $pdf->getX();
       $y_multicellc2 = $pdf->getY();
       $pdf->setXY($x_cellb2 + 218, $y_cellb2 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld2 = $pdf->getX();
       $y_celld2 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -583,11 +576,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf2 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle2 - 36, $y_celle2 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg2 = $pdf->getX();
       $y_multicellg2 = $pdf->getY();
       $pdf->setXY($x_cellf2 + 218, $y_cellf2 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida2'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida2'],1,1,'C',0);
       $x_cellh2 = $pdf->getX();
       $y_cellh2 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -614,7 +607,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln2 = $pdf->getX();
       $y_celln2 = $pdf->getY();
       $pdf->setXY($x_celln2 + 0, $y_celln2 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello2 = $pdf->getX();
       $y_multicello2 = $pdf->getY();
       //niveles de cumplimiento
@@ -631,41 +624,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1b = $pdf->getX();
       $y_multicell1b = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1b + 53, $y_multicell1b - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2b = $pdf->getX();
       $y_multicell2b = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2b + 106, $y_multicell2b - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3b = $pdf->getX();
       $y_multicell3b = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3b + 159, $y_multicell3b - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4b = $pdf->getX();
       $y_multicell4b = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4b + 211, $y_multicell4b - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5b = $pdf->getX();
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
-    $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);  
+      $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);  
 
       //meta individual 3
       $pdf->AddPage();
@@ -685,11 +677,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb3 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella3 - 20, $y_cella3 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc3 = $pdf->getX();
       $y_multicellc3 = $pdf->getY();
       $pdf->setXY($x_cellb3 + 218, $y_cellb3 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld3 = $pdf->getX();
       $y_celld3 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -703,11 +695,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf3 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle3 - 36, $y_celle3 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg3 = $pdf->getX();
       $y_multicellg3 = $pdf->getY();
       $pdf->setXY($x_cellf3 + 218, $y_cellf3 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida3'],1,1,'C',0);
       $x_cellh3 = $pdf->getX();
       $y_cellh3 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -721,11 +713,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj3 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli3 - 8, $y_celli3 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk3 = $pdf->getX();
       $y_multicellk3 = $pdf->getY();
       $pdf->setXY($x_cellj3 + 218, $y_cellj3 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta3'],1,1,'C',0);
       $x_cellm3 = $pdf->getX();
       $y_cellm3 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -734,7 +726,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln3 = $pdf->getX();
       $y_celln3 = $pdf->getY();
       $pdf->setXY($x_celln3 + 0, $y_celln3 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello3 = $pdf->getX();
       $y_multicello3 = $pdf->getY();
       //niveles de cumplimiento
@@ -751,41 +743,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1c = $pdf->getX();
       $y_multicell1c = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1c + 53, $y_multicell1c - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2c = $pdf->getX();
       $y_multicell2c = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2c + 106, $y_multicell2c - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3c = $pdf->getX();
       $y_multicell3c = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3c + 159, $y_multicell3c - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4c = $pdf->getX();
       $y_multicell4c = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4c + 211, $y_multicell4c - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5c = $pdf->getX();
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento3'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento3'],1,1,'C',0);
     }
       else if($resultado = $meta4){ //ejecución si tiene 4 metas
         //meta individual1
@@ -805,11 +796,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb1 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella1 - 20, $y_cella1 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc1 = $pdf->getX();
       $y_multicellc1 = $pdf->getY();
       $pdf->setXY($x_cellb1 + 218, $y_cellb1 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld1 = $pdf->getX();
       $y_celld1 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -823,11 +814,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf1 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle1 - 36, $y_celle1 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg1 = $pdf->getX();
       $y_multicellg1 = $pdf->getY();
       $pdf->setXY($x_cellf1 + 218, $y_cellf1 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida1'],1,1,'C',0);
       $x_cellh1 = $pdf->getX();
       $y_cellh1 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -841,11 +832,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj1 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli1 - 8, $y_celli1 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk1 = $pdf->getX();
       $y_multicellk1 = $pdf->getY();
       $pdf->setXY($x_cellj1 + 218, $y_cellj1 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta1'],1,1,'C',0);
       $x_cellm1 = $pdf->getX();
       $y_cellm1 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -854,7 +845,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln1 = $pdf->getX();
       $y_celln1 = $pdf->getY();
       $pdf->setXY($x_celln1 + 0, $y_celln1 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello1 = $pdf->getX();
       $y_multicello1 = $pdf->getY();
       //niveles de cumplimiento
@@ -876,36 +867,35 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell1a = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1a + 53, $y_multicell1a - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2a = $pdf->getX();
       $y_multicell2a = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2a + 106, $y_multicell2a - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3a = $pdf->getX();
       $y_multicell3a = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3a + 159, $y_multicell3a - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4a = $pdf->getX();
       $y_multicell4a = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4a + 211, $y_multicell4a - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5a = $pdf->getX();
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
 
       //meta individual 2
       $pdf->AddPage();
@@ -925,11 +915,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb2 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella2 - 20, $y_cella2 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc2 = $pdf->getX();
       $y_multicellc2 = $pdf->getY();
       $pdf->setXY($x_cellb2 + 218, $y_cellb2 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld2 = $pdf->getX();
       $y_celld2 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -943,11 +933,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf2 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle2 - 36, $y_celle2 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg2 = $pdf->getX();
       $y_multicellg2 = $pdf->getY();
       $pdf->setXY($x_cellf2 + 218, $y_cellf2 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida2'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida2'],1,1,'C',0);
       $x_cellh2 = $pdf->getX();
       $y_cellh2 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -961,11 +951,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj2 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli2 - 8, $y_celli2 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk2 = $pdf->getX();
       $y_multicellk2 = $pdf->getY();
       $pdf->setXY($x_cellj2 + 218, $y_cellj2 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta2'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta2'],1,1,'C',0);
       $x_cellm2 = $pdf->getX();
       $y_cellm2 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -974,7 +964,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln2 = $pdf->getX();
       $y_celln2 = $pdf->getY();
       $pdf->setXY($x_celln2 + 0, $y_celln2 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello2 = $pdf->getX();
       $y_multicello2 = $pdf->getY();
       //niveles de cumplimiento
@@ -996,36 +986,35 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_multicell1b = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1b + 53, $y_multicell1b - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2b = $pdf->getX();
       $y_multicell2b = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2b + 106, $y_multicell2b - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3b = $pdf->getX();
       $y_multicell3b = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3b + 159, $y_multicell3b - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4b = $pdf->getX();
       $y_multicell4b = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4b + 211, $y_multicell4b - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5b = $pdf->getX();
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);  
+      $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);  
 
       //meta individual 3
       $pdf->AddPage();
@@ -1045,11 +1034,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb3 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella3 - 20, $y_cella3 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc3 = $pdf->getX();
       $y_multicellc3 = $pdf->getY();
       $pdf->setXY($x_cellb3 + 218, $y_cellb3 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld3 = $pdf->getX();
       $y_celld3 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1063,11 +1052,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf3 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle3 - 36, $y_celle3 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg3 = $pdf->getX();
       $y_multicellg3 = $pdf->getY();
       $pdf->setXY($x_cellf3 + 218, $y_cellf3 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida3'],1,1,'C',0);
       $x_cellh3 = $pdf->getX();
       $y_cellh3 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1081,11 +1070,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj3 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli3 - 8, $y_celli3 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk3 = $pdf->getX();
       $y_multicellk3 = $pdf->getY();
       $pdf->setXY($x_cellj3 + 218, $y_cellj3 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta3'],1,1,'C',0);
       $x_cellm3 = $pdf->getX();
       $y_cellm3 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1094,7 +1083,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln3 = $pdf->getX();
       $y_celln3 = $pdf->getY();
       $pdf->setXY($x_celln3 + 0, $y_celln3 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello3 = $pdf->getX();
       $y_multicello3 = $pdf->getY();
       //niveles de cumplimiento
@@ -1111,42 +1100,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1c = $pdf->getX();
       $y_multicell1c = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1c + 53, $y_multicell1c - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2c = $pdf->getX();
       $y_multicell2c = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2c + 106, $y_multicell2c - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3c = $pdf->getX();
       $y_multicell3c = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3c + 159, $y_multicell3c - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4c = $pdf->getX();
       $y_multicell4c = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4c + 211, $y_multicell4c - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5c = $pdf->getX();
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
       $pdf->SetLineWidth(0);
-      */
-      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento3'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento3'],1,1,'C',0);
       
       //meta individual 4
       $pdf->AddPage();
@@ -1166,11 +1153,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb4 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella4 - 20, $y_cella4 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico4'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico4'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc4 = $pdf->getX();
       $y_multicellc4 = $pdf->getY();
       $pdf->setXY($x_cellb4 + 218, $y_cellb4 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta4'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta4'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld4 = $pdf->getX();
       $y_celld4 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1184,11 +1171,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf4 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle4 - 36, $y_celle4 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg4 = $pdf->getX();
       $y_multicellg4 = $pdf->getY();
       $pdf->setXY($x_cellf4 + 218, $y_cellf4 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida4'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida4'],1,1,'C',0);
       $x_cellh4 = $pdf->getX();
       $y_cellh4 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1202,11 +1189,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj4 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli4 - 8, $y_celli4 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk4 = $pdf->getX();
       $y_multicellk4 = $pdf->getY();
       $pdf->setXY($x_cellj4 + 218, $y_cellj4 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta4'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta4'],1,1,'C',0);
       $x_cellm4 = $pdf->getX();
       $y_cellm4 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1215,7 +1202,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln4 = $pdf->getX();
       $y_celln4 = $pdf->getY();
       $pdf->setXY($x_celln4 + 0, $y_celln4 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello4 = $pdf->getX();
       $y_multicello4 = $pdf->getY();
       //niveles de cumplimiento
@@ -1232,41 +1219,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1d = $pdf->getX();
       $y_multicell1d = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1d + 53, $y_multicell1d - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2d = $pdf->getX();
       $y_multicell2d = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2d + 106, $y_multicell2d - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3d = $pdf->getX();
       $y_multicell3d = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3d + 159, $y_multicell3d - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4d = $pdf->getX();
       $y_multicell4d = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4d + 211, $y_multicell4d - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5d = $pdf->getX();
       $y_multicell5d = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1d + 3, $x_multicell1d, $y_multicell1d + 3);
-      $pdf->SetLineWidth(0);;*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento4'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento4'],1,1,'C',0);
       }
 
       else if($resultado = $meta5){ //ejecucion si tiene 5 metas
@@ -1287,11 +1273,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb1 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella1 - 20, $y_cella1 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico1'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc1 = $pdf->getX();
       $y_multicellc1 = $pdf->getY();
       $pdf->setXY($x_cellb1 + 218, $y_cellb1 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta1'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld1 = $pdf->getX();
       $y_celld1 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1305,11 +1291,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf1 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle1 - 36, $y_celle1 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg1 = $pdf->getX();
       $y_multicellg1 = $pdf->getY();
       $pdf->setXY($x_cellf1 + 218, $y_cellf1 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida1'],1,1,'C',0);
       $x_cellh1 = $pdf->getX();
       $y_cellh1 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1323,11 +1309,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj1 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli1 - 8, $y_celli1 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk1 = $pdf->getX();
       $y_multicellk1 = $pdf->getY();
       $pdf->setXY($x_cellj1 + 218, $y_cellj1 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta1'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta1'],1,1,'C',0);
       $x_cellm1 = $pdf->getX();
       $y_cellm1 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1336,7 +1322,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln1 = $pdf->getX();
       $y_celln1 = $pdf->getY();
       $pdf->setXY($x_celln1 + 0, $y_celln1 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta1'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello1 = $pdf->getX();
       $y_multicello1 = $pdf->getY();
       //niveles de cumplimiento
@@ -1353,41 +1339,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1a = $pdf->getX();
       $y_multicell1a = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1a + 53, $y_multicell1a - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2a = $pdf->getX();
       $y_multicell2a = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2a + 106, $y_multicell2a - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3a = $pdf->getX();
       $y_multicell3a = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3a + 159, $y_multicell3a - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4a = $pdf->getX();
       $y_multicell4a = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4a + 211, $y_multicell4a - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta1'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5a = $pdf->getX();
       $y_multicell5a = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1a + 3, $x_multicell1a, $y_multicell1a + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento1'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
 
       //meta individual 2
       $pdf->AddPage();
@@ -1407,11 +1392,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb2 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella2 - 20, $y_cella2 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico2'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc2 = $pdf->getX();
       $y_multicellc2 = $pdf->getY();
       $pdf->setXY($x_cellb2 + 218, $y_cellb2 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta2'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld2 = $pdf->getX();
       $y_celld2 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1425,11 +1410,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf2 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle2 - 36, $y_celle2 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg2 = $pdf->getX();
       $y_multicellg2 = $pdf->getY();
       $pdf->setXY($x_cellf2 + 218, $y_cellf2 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida2'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida2'],1,1,'C',0);
       $x_cellh2 = $pdf->getX();
       $y_cellh2 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1443,11 +1428,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj2 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli2 - 8, $y_celli2 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk2 = $pdf->getX();
       $y_multicellk2 = $pdf->getY();
       $pdf->setXY($x_cellj2 + 218, $y_cellj2 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta2'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta2'],1,1,'C',0);
       $x_cellm2 = $pdf->getX();
       $y_cellm2 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1456,7 +1441,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln2 = $pdf->getX();
       $y_celln2 = $pdf->getY();
       $pdf->setXY($x_celln2 + 0, $y_celln2 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta2'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello2 = $pdf->getX();
       $y_multicello2 = $pdf->getY();
       //niveles de cumplimiento
@@ -1473,41 +1458,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1b = $pdf->getX();
       $y_multicell1b = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1b + 53, $y_multicell1b - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2b = $pdf->getX();
       $y_multicell2b = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2b + 106, $y_multicell2b - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3b = $pdf->getX();
       $y_multicell3b = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3b + 159, $y_multicell3b - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4b = $pdf->getX();
       $y_multicell4b = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4b + 211, $y_multicell4b - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta2'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5b = $pdf->getX();
       $y_multicell5b = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1b + 3, $x_multicell1b, $y_multicell1b + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento2'],1,1,'C',0);  
+      $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);  
 
       //meta individual 3
       $pdf->AddPage();
@@ -1527,11 +1511,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb3 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella3 - 20, $y_cella3 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico3'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc3 = $pdf->getX();
       $y_multicellc3 = $pdf->getY();
       $pdf->setXY($x_cellb3 + 218, $y_cellb3 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta3'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld3 = $pdf->getX();
       $y_celld3 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1545,11 +1529,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf3 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle3 - 36, $y_celle3 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg3 = $pdf->getX();
       $y_multicellg3 = $pdf->getY();
       $pdf->setXY($x_cellf3 + 218, $y_cellf3 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida3'],1,1,'C',0);
       $x_cellh3 = $pdf->getX();
       $y_cellh3 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1563,11 +1547,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj3 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli3 - 8, $y_celli3 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk3 = $pdf->getX();
       $y_multicellk3 = $pdf->getY();
       $pdf->setXY($x_cellj3 + 218, $y_cellj3 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta3'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta3'],1,1,'C',0);
       $x_cellm3 = $pdf->getX();
       $y_cellm3 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1576,7 +1560,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln3 = $pdf->getX();
       $y_celln3 = $pdf->getY();
       $pdf->setXY($x_celln3 + 0, $y_celln3 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta3'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello3 = $pdf->getX();
       $y_multicello3 = $pdf->getY();
       //niveles de cumplimiento
@@ -1593,41 +1577,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1c = $pdf->getX();
       $y_multicell1c = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1c + 53, $y_multicell1c - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2c = $pdf->getX();
       $y_multicell2c = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2c + 106, $y_multicell2c - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3c = $pdf->getX();
       $y_multicell3c = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3c + 159, $y_multicell3c - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4c = $pdf->getX();
       $y_multicell4c = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4c + 211, $y_multicell4c - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta3'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5c = $pdf->getX();
       $y_multicell5c = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1c + 3, $x_multicell1c, $y_multicell1c + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento3'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento3'],1,1,'C',0);
       
       //meta individual 4
       $pdf->AddPage();
@@ -1647,11 +1630,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb4 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella4 - 20, $y_cella4 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico4'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico4'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc4 = $pdf->getX();
       $y_multicellc4 = $pdf->getY();
       $pdf->setXY($x_cellb4 + 218, $y_cellb4 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta4'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta4'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld4 = $pdf->getX();
       $y_celld4 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1665,11 +1648,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf4 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle4 - 36, $y_celle4 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg4 = $pdf->getX();
       $y_multicellg4 = $pdf->getY();
       $pdf->setXY($x_cellf4 + 218, $y_cellf4 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida4'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida4'],1,1,'C',0);
       $x_cellh4 = $pdf->getX();
       $y_cellh4 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1683,11 +1666,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj4 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli4 - 8, $y_celli4 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk4 = $pdf->getX();
       $y_multicellk4 = $pdf->getY();
       $pdf->setXY($x_cellj4 + 218, $y_cellj4 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta4'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta4'],1,1,'C',0);
       $x_cellm4 = $pdf->getX();
       $y_cellm4 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1696,7 +1679,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln4 = $pdf->getX();
       $y_celln4 = $pdf->getY();
       $pdf->setXY($x_celln4 + 0, $y_celln4 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta4'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello4 = $pdf->getX();
       $y_multicello4 = $pdf->getY();
       //niveles de cumplimiento
@@ -1713,42 +1696,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1d = $pdf->getX();
       $y_multicell1d = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1d + 53, $y_multicell1d - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2d = $pdf->getX();
       $y_multicell2d = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2d + 106, $y_multicell2d - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3d = $pdf->getX();
       $y_multicell3d = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3d + 159, $y_multicell3d - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4d = $pdf->getX();
       $y_multicell4d = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4d + 211, $y_multicell4d - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta4'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5d = $pdf->getX();
       $y_multicell5d = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1d + 3, $x_multicell1d, $y_multicell1d + 3);
       $pdf->SetLineWidth(0);
-      */
-      /*
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento4'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento4'],1,1,'C',0);
 
       //meta 5 individual
       $pdf->AddPage();
@@ -1768,11 +1749,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellb5 = $pdf->getY();
       //alinea el contenido del eje con el contenido de la fecha
       $pdf->setXY($x_cella5 - 20, $y_cella5 + 5);//parte del titulo eje
-      $pdf->multicell(213,5,mb_convert_encoding($datos['ejeestrategico5'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
+      $pdf->multicell(213,5,mb_convert_encoding($metas['ejeestrategico5'],'ISO-8859-1','UTF-8'),1,'C',0);//->coloca eje
       $x_multicellc5 = $pdf->getX();
       $y_multicellc5 = $pdf->getY();
       $pdf->setXY($x_cellb5 + 218, $y_cellb5 + 0);//parte del titulo de fecha
-      $pdf->cell(40,5,mb_convert_encoding($datos['fechaCumpMeta5'],'ISO-8859-1','UTF-8'),1,1,'C',0);
+      $pdf->cell(40,5,mb_convert_encoding($metas['fechaCumpMeta5'],'ISO-8859-1','UTF-8'),1,1,'C',0);
       $x_celld5 = $pdf->getX();
       $y_celld5 = $pdf->getY();
       //alinea titulo linea con titulo unidad 
@@ -1786,11 +1767,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellf5 = $pdf->getY();
       //alinea contenido de linea con contenido de unidad de medida
       $pdf->setXY($x_celle5 - 36, $y_celle5 + 5);//parte del titulo linea
-      $pdf->multicell(213,5,mb_convert_encoding($datos['lineaestrategica5'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['lineaestrategica5'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellg5 = $pdf->getX();
       $y_multicellg5 = $pdf->getY();
       $pdf->setXY($x_cellf5 + 218, $y_cellf5 + 0);//parte del titulo de unidad
-      $pdf->cell(40,5,$datos['unidadmedida5'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['unidadmedida5'],1,1,'C',0);
       $x_cellh5 = $pdf->getX();
       $y_cellh5 = $pdf->getY();
       //alinea titulo de meta con titulo de ponderacion
@@ -1804,11 +1785,11 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $y_cellj5 = $pdf->getY();
       //alinea contenido de meta con contenido de ponderacion
       $pdf->setXY($x_celli5 - 8, $y_celli5 + 5);//parte del titulo de meta
-      $pdf->multicell(213,5,mb_convert_encoding($datos['redacionMeta5'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['redacionMeta5'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicellk5 = $pdf->getX();
       $y_multicellk5 = $pdf->getY();
       $pdf->setXY($x_cellj5 + 218, $y_cellj5 + 0);//parte del titulo de ponderación
-      $pdf->cell(40,5,$datos['ponderacionMeta5'],1,1,'C',0);
+      $pdf->cell(40,5,$metas['ponderacionMeta5'],1,1,'C',0);
       $x_cellm5 = $pdf->getX();
       $y_cellm5 = $pdf->getY();
       //alinear titulo de indicador con contenido de indicador
@@ -1817,7 +1798,7 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $x_celln5 = $pdf->getX();
       $y_celln5 = $pdf->getY();
       $pdf->setXY($x_celln5 + 0, $y_celln5 + 0);//partir del titulo de indicador
-      $pdf->multicell(213,5,mb_convert_encoding($datos['indicadorMeta5'],'ISO-8859-1','UTF-8'),1,'C',0);
+      $pdf->multicell(213,5,mb_convert_encoding($metas['indicadorMeta5'],'ISO-8859-1','UTF-8'),1,'C',0);
       $x_multicello5 = $pdf->getX();
       $y_multicello5 = $pdf->getY();
       //niveles de cumplimiento
@@ -1834,41 +1815,40 @@ if ($resultado = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['deficiente5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding$metas['deficiente5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1e = $pdf->getX();
       $y_multicell1e = $pdf->getY();
       //multicell2
       $pdf->setXY($x_multicell1e + 53, $y_multicell1e - 5);//parte de la multicell1
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpNoAproMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpNoAproMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell2e = $pdf->getX();
       $y_multicell2e = $pdf->getY();
       //multicell3
       $pdf->setXY($x_multicell2e + 106, $y_multicell2e - 5);//parte de la multicell2
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpAproMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpAproMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell3e = $pdf->getX();
       $y_multicell3e = $pdf->getY();
       //multicell4
       $pdf->setXY($x_multicell3e + 159, $y_multicell3e - 5);//parte de la multicell3
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSatisfMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSatisfMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell4e = $pdf->getX();
       $y_multicell4e = $pdf->getY();
       //multicell5
       $pdf->setXY($x_multicell4e + 211, $y_multicell4e - 5);//parte de la multicell4
-      $pdf->multicell(45,5,mb_convert_encoding($datos['NivelCumpSobreMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['NivelCumpSobreMeta5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell5e = $pdf->getX();
       $y_multicell5e = $pdf->getY();
       $pdf->SetFont('Arial','B',8);
       $pdf->ln(3);
-      /*->//dibujar la linea
+      //dibujar la linea
       $pdf->SetLineWidth(0.5);
       $pdf->SetDrawColor(0, 0, 0);
       $pdf->Line(268, $y_multicell1e + 3, $x_multicell1e, $y_multicell1e + 3);
-      $pdf->SetLineWidth(0);*/
-      /*
+      $pdf->SetLineWidth(0);
       $pdf->ln(3);
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
-      $pdf->cell(15,5,$datos['nivelescumplimiento5'],1,1,'C',0);
+      $pdf->cell(15,5,$metas['nivelescumplimiento5'],1,1,'C',0);
       }
 
 $conexion->close();
