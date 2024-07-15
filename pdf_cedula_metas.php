@@ -53,18 +53,17 @@ $pdf->cell(100,5,'',1,1,'C',0);
 $pdf->ln(5);
 
 /*
-//condicional para generar metas con base a la cantidad de metas que tiene cada empleado y que est+an identificados por un id de empleado
-
 $sql = $conexion->prepare("SELECT * FROM descripcionesmetas2023 WHERE id_empleado = :id_empleado");
-$metas = $conexion->consulta($sql);
+$sql->execute([':id_empleado' => $id]);
+$metas = $sql->fetch(PDO::FETCH_ASSOC);
 
-$meta1 = [''];//se coloca los parámetros para validar que el empleado solo tiene una meta
-$meta2 = [''];//se colocan los parámetro para validar que el empleado tiene dos metas
-$meta3 = [''];//se colocan los parámetro para validar que el empleado tiene tres metas
-$meta4 = [''];//se colocan los parámetro para validar que el empleado tiene cuatro metas
-$meta5 = [''];//se colocan los parámetro para validar que el empleado tiene cinco metas
+$meta1 = ['ejeestrategico1', 'lineaestrategica1', 'redacionMeta1', 'indicadorMeta1', 'fechaCumpMeta1', 'unidadmedida1', 'ponderacionMeta1'];//se coloca los parámetros para validar que el empleado solo tiene una meta
+$meta2 = ['ejeestrategico1','lineaestrategica1','redacionMeta1','indicadorMeta1','fechaCumpMeta1','unidadmedida1','ponderacionMeta1','ejeestrategico2','lineaestrategica2','redacionMeta2','indicadorMeta2','fechaCumpMeta2','unidadmedida2','ponderacionMeta2'];//se colocan los parámetro para validar que el empleado tiene dos metas
+$meta3 = ['ejeestrategico1','lineaestrategica1','redacionMeta1','indicadorMeta1','fechaCumpMeta1','unidadmedida1','ponderacionMeta1','ejeestrategico2','lineaestrategica2','redacionMeta2','indicadorMeta2','fechaCumpMeta2','unidadmedida2','ponderacionMeta2','ejeestrategico3','lineaestrategica3','redacionMeta3','indicadorMeta3','fechaCumpMeta3','unidadmedida3','ponderacionMeta3'];//se colocan los parámetro para validar que el empleado tiene tres metas
+$meta4 = ['ejeestrategico1','lineaestrategica1','redacionMeta1','indicadorMeta1','fechaCumpMeta1','unidadmedida1','ponderacionMeta1','ejeestrategico2','lineaestrategica2','redacionMeta2','indicadorMeta2','fechaCumpMeta2','unidadmedida2','ponderacionMeta2','ejeestrategico3','lineaestrategica3','redacionMeta3','indicadorMeta3','fechaCumpMeta3','unidadmedida3','ponderacionMeta3','ejeestrategico4','lineaestrategica4','redacionMeta4','indicadorMeta4','fechaCumpMeta4','unidadmedida4','ponderacionMeta4'];//se colocan los parámetro para validar que el empleado tiene cuatro metas
+$meta5 = ['ejeestrategico1','lineaestrategica1','redacionMeta1','indicadorMeta1','fechaCumpMeta1','unidadmedida1','ponderacionMeta1','ejeestrategico2','lineaestrategica2','redacionMeta2','indicadorMeta2','fechaCumpMeta2','unidadmedida2','ponderacionMeta2','ejeestrategico3','lineaestrategica3','redacionMeta3','indicadorMeta3','fechaCumpMeta3','unidadmedida3','ponderacionMeta3','ejeestrategico4','lineaestrategica4','redacionMeta4','indicadorMeta4','fechaCumpMeta4','unidadmedida4','ponderacionMeta4','ejeestrategico5','lineaestrategica5','redacionMeta5','indicadorMeta5','fechaCumpMeta5','unidadmedida5','ponderacionMeta5'];//se colocan los parámetro para validar que el empleado tiene cinco metas
 
-if ($metas = $meta1) { //->ejecución de código si tiene una meta
+if ($metas && array_diff($meta1, array_keys($metas)) === []) { //->ejecución de código si tiene una meta
     //meta individual 1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -184,7 +183,8 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
     $pdf->SetFont('Arial','',8);
     $pdf->cell(15,5,$metas['nivelescumplimiento1'],1,1,'C',0);
     }
- else if($metas = $meta2){ //->ejeución si tiene dos metas
+  
+ else if($metas && array_diff($meta2, array_keys($metas)) === []){ //->ejeución si tiene dos metas
     //meta individual1
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
@@ -419,9 +419,9 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
     $pdf->SetLineWidth(0);
     $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
     $pdf->SetFont('Arial','',8);
-    $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);    
-}
-    else if($resultado = $meta3){ //->condicional si tiene tres metas
+    $pdf->cell(15,5,$metas['nivelescumplimiento2'],1,1,'C',0);
+  }
+ else if($metas && array_diff($meta3, array_keys($metas)) === []){ //->condicional si tiene tres metas
       //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
@@ -778,7 +778,7 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       $pdf->SetFont('Arial','',8);
       $pdf->cell(15,5,$metas['nivelescumplimiento3'],1,1,'C',0);
     }
-      else if($resultado = $meta4){ //ejecución si tiene 4 metas
+ else if($metas && array_diff($meta4, array_keys($metas)) === []){ //ejecución si tiene 4 metas
         //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
@@ -1254,9 +1254,9 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       $pdf->SetFont('Arial','',8);
       $pdf->cell(15,5,$metas['nivelescumplimiento4'],1,1,'C',0);
       }
-
-      else if($resultado = $meta5){ //ejecucion si tiene 5 metas
-       //meta individual1
+ else if($metas && array_diff($meta5, array_keys($metas)) === []){
+      //ejecucion si tiene 5 metas
+      //meta individual1
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1815,7 +1815,7 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(4);
       $pdf->cell(48,5,'Nivel de cumplimiento sobresaliente',0,1,'L',0);
       //multicell1
-      $pdf->multicell(45,5,mb_convert_encoding$metas['deficiente5'],'ISO-8859-1','UTF-8'),1,'L',0);
+      $pdf->multicell(45,5,mb_convert_encoding($metas['deficiente5'],'ISO-8859-1','UTF-8'),1,'L',0);
       $x_multicell1e = $pdf->getX();
       $y_multicell1e = $pdf->getY();
       //multicell2
@@ -1849,10 +1849,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       $pdf->cell(84,5,'VALOR DE GRADO DE CUMPLIMIENTO DE LOS OBJETIVOS',0,0,'C',0);
       $pdf->SetFont('Arial','',8);
       $pdf->cell(15,5,$metas['nivelescumplimiento5'],1,1,'C',0);
-      }
-
-$conexion->close();
-*/
+      }else{
+  echo "No hay metas disponibles para este empleado.";
+}
+$conexion->close();*/
 
 //EMPIEZAN LAS METAS FUNCIONALES ES FIJA Y ES 1
 $pdf->AddPage();
@@ -2107,24 +2107,24 @@ $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE DURANTE EL PROCESO DE CAPTURA',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding($datos['comentario'],'ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE EN EL PROCESO DE SEGUIMIENTO',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding($datos['comentariojefe'],'ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(90,5,mb_convert_encoding('COMENTARIO DEL JEFE EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioJefeResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(82);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(95,5,mb_convert_encoding('COMENTARIO DEL COLABORADOR EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->Output('I','formato.pdf');
 ?>
