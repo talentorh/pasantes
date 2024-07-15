@@ -305,6 +305,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
     //meta individual 2
     $pdf->AddPage();
+    $pdf->SetLineWidth(0.5);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Line(10, 24, 268, 24);
+    $pdf->SetLineWidth(0);
     $pdf->SetFillColor(3,19,100);
     $pdf->SetTextColor(255, 255, 255);
     $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -542,6 +546,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 2
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -661,6 +669,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 3
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -899,6 +911,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 2
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1018,6 +1034,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 3
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1137,6 +1157,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       
       //meta individual 4
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1376,6 +1400,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 2
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1495,6 +1523,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta individual 3
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1614,6 +1646,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
       
       //meta individual 4
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
@@ -1733,6 +1769,10 @@ if ($metas = $meta1) { //->ejecución de código si tiene una meta
 
       //meta 5 individual
       $pdf->AddPage();
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetFillColor(3,19,100);
       $pdf->SetTextColor(255, 255, 255);
       $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
