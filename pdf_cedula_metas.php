@@ -5,7 +5,7 @@ require 'fpdf186/fpdf.php';
 
 class PDF extends FPDF{
     function header(){
-        $this->cell(90,7,'',0,1,'C'); //<-titulo pendiente
+        $this->cell(90,7,'Título pendiente',0,1,'C'); //<-titulo pendiente
         $this->Image('img/hraei.png',170,5,100,20);
         $this->Ln(10); 
     }
@@ -2107,24 +2107,24 @@ $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE DURANTE EL PROCESO DE CAPTURA',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentariojefe'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(88,5,'COMENTARIO DEL JEFE EN EL PROCESO DE SEGUIMIENTO',0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioJefeResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(85);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(90,5,mb_convert_encoding('COMENTARIO DEL JEFE EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioJefeResultadoObtenido2022'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->cell(82);
 $pdf->SetFont('Arial','B','8');
 $pdf->cell(95,5,mb_convert_encoding('COMENTARIO DEL COLABORADOR EN EL PROCESO DE EVALUACIÓN FINAL','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->cell(76);
 $pdf->SetFont('Arial','','8');
-$pdf->multicell(107,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,'C',0);
+$pdf->multicell(107,5,mb_convert_encoding($datos['comentarioResultado2022'],'ISO-8859-1','UTF-8'),1,'C',0);
 $pdf->Output('I','formato.pdf');
 ?>
