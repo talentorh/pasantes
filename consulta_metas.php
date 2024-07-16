@@ -1,10 +1,10 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 require 'clases/conexion.php';
 
 try {
     $conexion = new Conexion();
-    $id = 44;
+    $id = 6;
 
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
@@ -12,11 +12,11 @@ try {
 
     $sql = $conexion->prepare("SELECT * FROM descripcionesmetas2023 WHERE id_empleado = :id_empleado");
     $sql->execute([':id_empleado' => $id]);
-    $datos = $sql->fetch();
+    $metas = $sql->fetch();
 
-    if ($datos) {
+    if ($metas) {
         $conexion->commit();
-        $idempleado = $datos['id_empleado'];
+        $idempleado = $metas['id_empleado'];
 
         if ($id == $idempleado) {
             require 'pdf_cedula_metas.php';
