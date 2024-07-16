@@ -22,8 +22,8 @@ $pdf->AddPage();
 $pdf->SetLineWidth(0.5);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10, 24, 171, 24);
-$pdf->SetFont('Arial','B',8);
 $pdf->SetLineWidth(0);
+$pdf->SetFont('Arial','B',8);
 $pdf->cell(258,5,'DATOS DEL EVALUADO',0,1,'L',0);
 $pdf->cell(30,5,'No. NOMINA',0,0,'L',0);
 $pdf->SetFont('Arial','',8);
@@ -174,10 +174,10 @@ if ($metas['redacionMeta1'] != '') { //->ejecución de código si tiene una meta
   
 if($metas['redacionMeta2'] != ''){ //->ejeución si tiene dos metas
     $pdf->AddPage();
-    $pdf->SetFillColor(3,19,100);
-    $pdf->SetTextColor(255, 255, 255);
-    $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
-    $pdf->ln(5);
+    $pdf->SetLineWidth(0.5);
+    $pdf->SetDrawColor(0, 0, 0);
+    $pdf->Line(10, 24, 268, 24);
+    $pdf->SetLineWidth(0);
     $pdf->SetTextColor(0,0,0);
     $pdf->SetFont('Arial','',8);
     //alinea titulo de eje con titulo de fecha
@@ -293,10 +293,10 @@ if($metas['redacionMeta2'] != ''){ //->ejeución si tiene dos metas
   }
 if($metas['redacionMeta3'] != ''){ //->condicional si tiene tres metas
       $pdf->AddPage();
-      $pdf->SetFillColor(3,19,100);
-      $pdf->SetTextColor(255, 255, 255);
-      $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
-      $pdf->ln(5);
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetTextColor(0,0,0);
       $pdf->SetFont('Arial','',8);
       //alinea titulo de eje con titulo de fecha
@@ -412,10 +412,10 @@ if($metas['redacionMeta3'] != ''){ //->condicional si tiene tres metas
     }
 if($metas['redacionMeta4'] != ''){ //ejecución si tiene 4 metas
       $pdf->AddPage();
-      $pdf->SetFillColor(3,19,100);
-      $pdf->SetTextColor(255, 255, 255);
-      $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
-      $pdf->ln(5);
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetTextColor(0,0,0);
       $pdf->SetFont('Arial','',8);
       //alinea titulo de eje con titulo de fecha
@@ -532,10 +532,10 @@ if($metas['redacionMeta4'] != ''){ //ejecución si tiene 4 metas
 if($metas['redacionMeta5'] != ''){
       //meta 5 individual
       $pdf->AddPage();
-      $pdf->SetFillColor(3,19,100);
-      $pdf->SetTextColor(255, 255, 255);
-      $pdf->cell(258,7,'Metas individuales',0,1,'C',1);
-      $pdf->ln(5);
+      $pdf->SetLineWidth(0.5);
+      $pdf->SetDrawColor(0, 0, 0);
+      $pdf->Line(10, 24, 268, 24);
+      $pdf->SetLineWidth(0);
       $pdf->SetTextColor(0,0,0);
       $pdf->SetFont('Arial','',8);
       //alinea titulo de eje con titulo de fecha
