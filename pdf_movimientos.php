@@ -72,43 +72,31 @@ $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,79,10,137);
 $pdf->SetLineWidth(0);
 $pdf->SetFont('Arial','',8);
-$pdf->cell(15,5,mb_convert_encoding('SECCIÓN','ISO-8859-1','UTF-8'),0,0,'L',0);
+$pdf->cell(15,5,mb_convert_encoding('RFC','ISO-8859-1','UTF-8'),0,0,'L',0);
 $pdf->cell(80);
 $pdf->cell(8,5,'CURP',0,1,'L',0);
 $pdf->cell(1);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(17);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,0,'C',0);
-$pdf->cell(5.5,5,'',1,1,'C',0);
-$pdf->ln(3);
+
+$rfc = "VAAA920508253"; // Cambia esto al RFC deseado
+$digitos = str_split($rfc); // Cambia a $digitos para que sea correcto
+$cellWidth = 6; // Ancho de la celda
+$cellHeight = 5; // Alto de la celda
+foreach ($digitos as $digito) {
+    // Dibuja la celda y coloca el dígito en ella
+    $pdf->cell($cellWidth, $cellHeight, $digito, 1, 0, 'C', 0);
+}
+$pdf->cell(22);
+//código para poder extraer cada digito del curp y poder colocar cada digito en cada recuadro
+$curp = "VAAA920508HDFZRL03";
+$digitos = str_split($curp);
+$cellWidth = 5.5;
+$cellHeight = 5;
+foreach ($digitos as $digito) {
+    // Dibuja la celda y coloca el dígito en ella
+    $pdf->cell($cellWidth, $cellHeight, $digito, 1, 0, 'C', 0);
+}
+
+$pdf->ln(8);
 $pdf->cell(50,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
 $pdf->cell(5);
 $pdf->cell(50,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
@@ -279,22 +267,18 @@ $pdf->SetLineWidth(0.5);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,199,10,234);
 $pdf->SetLineWidth(0);
-
 $pdf->SetLineWidth(0.5);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,199,205,199);
 $pdf->SetLineWidth(0);
-
 $pdf->SetLineWidth(0.5);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(205,199,205,234);
 $pdf->SetLineWidth(0);
-
 $pdf->SetLineWidth(0.5);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,234,205,234);
 $pdf->SetLineWidth(0);
-
 $pdf->cell(35,5,'DATOS DEL SUSTITUTO',0,1,'L',0);
 $pdf->cell(62,5,'',0,0,'C',0);
 $pdf->cell(5);
@@ -630,5 +614,4 @@ $pdf->Line(140,141,140,175);
 $pdf->SetLineWidth(0);
 
 $pdf->Output('Formato.pdf','I');
-
 ?>
