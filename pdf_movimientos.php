@@ -84,11 +84,12 @@ foreach ($digitos as $digito) {
     $pdf->cell($cellWidth, $cellHeight, $digito, 1, 0, 'C', 0);
 }
 $pdf->ln(8);
-$pdf->cell(50,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
-$pdf->cell(5);
-$pdf->cell(50,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
-$pdf->cell(5);
-$pdf->cell(85,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,1,'C',0);
+$pdf->cell(10);
+$pdf->cell(50,5,mb_convert_encoding('texto prueba apellido paterno','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(10);
+$pdf->cell(55,5,mb_convert_encoding('texto prueba apellido materno','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(10);
+$pdf->cell(60,5,mb_convert_encoding('texto prueba nombre','ISO-8859-1','UTF-8'),0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(20, 54, 70, 54);//linea apellido p datos personales
@@ -111,11 +112,11 @@ $pdf->Ln(2);
 $pdf->SetFont('Arial','B',5);
 $pdf->cell(23,1,'DOMICILIO PARTICULAR',0,1,'C',0);
 $pdf->SetFont('Arial','B',6);
-$pdf->cell(85,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(85,5,mb_convert_encoding('texto prueba de calle','ISO-8859-1','UTF-8'),0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(50,5,'',0,0,'C',0);
+$pdf->cell(50,5,'texto prueba de numero exterior',0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(50,5,'',0,1,'C',0);
+$pdf->cell(50,5,'texto prueba de numero interior',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10, 63, 95, 63);//linea calle datos personales
@@ -133,15 +134,15 @@ $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(155, 63, 205, 63); //linea num interior datos personales
 $pdf->SetLineWidth(0);
 $pdf->cell(50,1,mb_convert_encoding('NÚMERO INTERIOR','ISO-8859-1','UTF-8'),0,1,'C',0);
-$pdf->cell(42,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(42,5,mb_convert_encoding('texto prueba de colonia','ISO-8859-1','UTF-8'),0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(31,5,'',0,0,'C',0);
+$pdf->cell(31,5,'prueba codigo p',0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(40,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(40,5,mb_convert_encoding('prueba delegacion ','ISO-8859-1','UTF-8'),0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(31,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),0,0,'C',0);
+$pdf->cell(31,5,mb_convert_encoding('prueba estado ','ISO-8859-1','UTF-8'),0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(31,5,'',0,1,'C',0);
+$pdf->cell(31,5,'prueba telefono',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10, 71, 52, 71);//linea de colonia datos personales
@@ -169,7 +170,7 @@ $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(174, 71, 205, 71);//linea de telefono datos personales
 $pdf->cell(31,5,mb_convert_encoding('TELÉFONO','ISO-8859-1','UTF-8'),0,1,'C',0);
-$pdf->cell(80,5,'',0,1,'C',0);
+$pdf->cell(80,5,'prueba de cuenta bancaria',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10, 81, 90, 81);//linea cuenta bancaria datos personales
