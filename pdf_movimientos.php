@@ -187,9 +187,9 @@ $pdf->cell(7,3,mb_convert_encoding('DÍA','ISO-8859-1','UTF-8'),1,0,'C',1);
 $pdf->cell(8,3,'MES',1,0,'C',1);
 $pdf->cell(9,3,mb_convert_encoding('AÑO','ISO-8859-1','UTF-8'),1,0,'C',1);
 $pdf->cell(28,3,'CODEPENDENCIA',1,1,'C',1);
-$pdf->cell(28,10.5,'',1,0,'C',0);
-$pdf->cell(30,10.5,'',1,0,'C',0);
-$pdf->cell(50,10.5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->cell(28,10.5,'Texto prueba de genero',1,0,'C',0);
+$pdf->cell(30,10.5,'Texto prueba de estado civil',1,0,'C',0);
+$pdf->cell(50,10.5,mb_convert_encoding('Texto prueba de lugar de nacimiento','ISO-8859-1','UTF-8'),1,0,'C',0);
 $pdf->MultiCell(35,1.5,'
 GOBIERNO FEDERAL
 
@@ -200,11 +200,22 @@ HRAE IXTAPALUCA
 ',1,'L',0);
 $pdf->Ln(-10.5);
 $pdf->Cell(143);
-$pdf->cell(7,10.5,'',1,0,'C',0);
-$pdf->cell(8,10.5,'',1,0,'C',0);
-$pdf->cell(9,10.5,'',1,0,'C',0);
+$pdf->Cell(7,3.5,'',1,0,'C',0);
+$pdf->cell(8,3.5,'',1,0,'C',0);
+$pdf->cell(9,3.5,'',1,0,'C',0);
 $pdf->cell(28,10.5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,1,'C',0);
-$pdf->ln(2);
+$pdf->Ln(-6.9);
+$pdf->Cell(143);
+$pdf->cell(7,3.5,'',1,0,'C');
+$pdf->cell(8,3.5,'',1,0,'C',0);
+$pdf->cell(9,3.5,'',1,0,'C',0);
+$pdf->Ln(3.4);
+$pdf->Cell(143);
+$pdf->cell(7,3.5,'10',1,0,'C');
+$pdf->cell(8,3.5,'01',1,0,'C',0);
+$pdf->cell(9,3.5,'2024',1,0,'C',0);
+$pdf->cell(28,3.5,'HARE Ixtapaluca',1,0,'C',0);
+$pdf->ln(5.5);
 $pdf->SetFont('Arial','B',7);
 $pdf->cell(195,3,'DATOS PRESUPUESTALES',1,1,'C',1);
 $pdf->SetFont('Arial','B',6);
@@ -230,16 +241,16 @@ $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(205,200,205,212);//linea derecha recuadro vigencia/operacion
 $pdf->SetLineWidth(0.3); 
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(13,5,'',1,0,'C',0);
-$pdf->cell(15,5,'',1,0,'C',0);
-$pdf->cell(15,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(21,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,0,'C',0);
-$pdf->cell(21,5,mb_convert_encoding('','ISO-8859-1','UTF-8'),1,0,'C',0);
-$pdf->cell(30,5,'',1,1,'C',0);
+$pdf->cell(10,5,'texto ap',1,0,'C',0);
+$pdf->cell(13,5,'texto u',1,0,'C',0);
+$pdf->cell(15,5,'texto p',1,0,'C',0);
+$pdf->cell(15,5,mb_convert_encoding('texto c','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->cell(10,5,'texto pa',1,0,'C',0);
+$pdf->cell(10,5,'texto ai',1,0,'C',0);
+$pdf->cell(10,5,'texto gp',1,0,'C',0);
+$pdf->cell(21,5,mb_convert_encoding('texto funcion','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->cell(21,5,mb_convert_encoding('texto subfuncion','ISO-8859-1','UTF-8'),1,0,'C',0);
+$pdf->cell(30,5,'texto puesto',1,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(45,119,175,119);//linea de adscripcion
@@ -249,6 +260,7 @@ $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(45,124,175,124);//linea de clave anterior
 $pdf->cell(33,5,'CLAVE ANTERIOR',0,1,'C',0);
 $pdf->cell(68,5,'CLAVE DEL CENTRO DE RESPONSABILIDAD',0,0,'C',0);
+//recuadros para colocar clave de centro de responsabilidad
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -274,11 +286,11 @@ $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,132,205,132);//linea arriba recuadro datos del sustituto
 $pdf->cell(35,3,'DATOS DEL SUSTITUTO',0,1,'L',0);
-$pdf->cell(62,5,'',0,0,'C',0);
+$pdf->cell(62,5,'prueba apellido p',0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(62,5,'',0,0,'C',0);
+$pdf->cell(62,5,'prueba apellido m',0,0,'C',0);
 $pdf->cell(5);
-$pdf->cell(63,5,'',0,1,'C',0);
+$pdf->cell(63,5,'prueba nombre',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10, 139, 72, 139);//linea de apellido p
@@ -296,7 +308,8 @@ $pdf->cell(63,1,'NOMBRE(S)',0,1,'C',0);
 $pdf->Ln(1);
 $pdf->cell(20,5,mb_convert_encoding('FILIACIÓN','ISO-8859-1','UTF-8'),0,0,'L',0);
 $pdf->cell(5);
-$pdf->SetLineWidth(0.3); 
+$pdf->SetLineWidth(0.3);
+//recuadros para colocar filiacion
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -324,6 +337,7 @@ $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(205, 132, 205, 164);//linea derecha recuadro datos del sustituto
 $pdf->cell(168);
+//recuadros para colocar motivo
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -331,6 +345,7 @@ $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->ln(2);
 $pdf->cell(20,5,'EFECTOS DEL',0,0,'L',0);
 $pdf->cell(5);
+//recuadros para colocar efectos del
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -342,6 +357,7 @@ $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(5);
 $pdf->cell(5,5,'AL',0,0,'C',0);
 $pdf->cell(5);
+//recuadros para colocar al 
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -355,6 +371,7 @@ $pdf->Ln(2);
 $pdf->cell(163);
 $pdf->cell(35,5,'NUM. DEL DOCUMENTO',0,1,'C',0);
 $pdf->cell(168);
+//recuadros para colocar num del documento
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -381,19 +398,19 @@ $pdf->cell(35,5,'TIPO DE TRABAJADOR',1,0,'C',1);
 $pdf->cell(24,5,'TIPO DE PLAZA',1,0,'C',1);
 $pdf->cell(24,5,'QNA',1,1,'C',1);
 $pdf->cell(12,5,'DEL',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(35,10,'',1,0,'C',0);//poner no. documento
-$pdf->cell(35,10,'',1,0,'C',0);//poner no. empleado
-$pdf->cell(35,10,'',1,0,'C',0);//poner tipo de trabajador
-$pdf->cell(24,10,'',1,0,'C',0);//poner tipo de plaza
-$pdf->cell(24,10,'',1,1,'C',0);//poner qna
+$pdf->cell(10,5,'01',1,0,'C',0);
+$pdf->cell(10,5,'01',1,0,'C',0);
+$pdf->cell(10,5,'2024',1,0,'C',0);
+$pdf->cell(35,10,'texto no, doc',1,0,'C',0);//poner no. documento
+$pdf->cell(35,10,'texto no emp',1,0,'C',0);//poner no. empleado
+$pdf->cell(35,10,'texto tipo',1,0,'C',0);//poner tipo de trabajador
+$pdf->cell(24,10,'texto tipo p',1,0,'C',0);//poner tipo de plaza
+$pdf->cell(24,10,'texto qna',1,1,'C',0);//poner qna
 $pdf->ln(-5);
 $pdf->cell(12,5,'AL',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,0,'C',0);
-$pdf->cell(10,5,'',1,1,'C',0);
+$pdf->cell(10,5,'01',1,0,'C',0);
+$pdf->cell(10,5,'05',1,0,'C',0);
+$pdf->cell(10,5,'2024',1,1,'C',0);
 $pdf->multicell(21,3,'TIPO DE MOVIMIENTO',1,'L',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
@@ -404,6 +421,7 @@ $pdf->Line(205,214,205,244);//linea derecha recuadro clave presupuestas
 $pdf->ln(-6);
 $pdf->cell(21);
 $pdf->cell(15,6,mb_convert_encoding('CÓDIGO','ISO-8859-1','UTF-8'),1,0,'C',0);
+//recuadro para poner codigo
 $pdf->cell(6,6,'',1,0,'C',0);
 $pdf->cell(6,6,'',1,0,'C',0);
 $pdf->cell(6,6,'',1,0,'C',0);
@@ -411,6 +429,7 @@ $pdf->cell(6,6,'',1,0,'C',0);
 $pdf->cell(17,6,mb_convert_encoding('Adscripción','ISO-8859-1','UTF-8'),1,0,'L',0);
 $pdf->cell(88,6,'HOSPITAL REGIONAL DE ALTA ESPECIALIDAD DE IXTAPALUCA',1,0,'C',0);
 $pdf->cell(30,6,'TIPO DE TRABAJADOR',1,1,'C',0);
+//aqui es para marcar que tipo de movimiento es
 $pdf->cell(25,3,'NUEVO INGRESO',0,0,'L',0);
 $pdf->cell(11);
 $pdf->cell(7,3,'',1,0,'C',0);
@@ -498,6 +517,7 @@ $pdf->cell(44,5,'CLAVE DE RESPONSABILIDAD',0,0,'L',0);
 $pdf->cell(108);
 $pdf->cell(43,5,'HORARIO ASIGNADO',1,1,'C',0);
 $pdf->cell(44);
+//recuadros para poner clave de responsabilidad de la clave de presupuestas
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -512,13 +532,13 @@ $pdf->cell(55);
 $pdf->cell(14,5,'8 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
-$pdf->cell(35,5,'NOMBRE DEL PUESTO',0,0,'L',0);
-$pdf->cell(124);
+$pdf->cell(25,5,'NOMBRE DEL PUESTO',0,0,'L',0);
+$pdf->cell(104,5,'texto prueba nombre',0,0,'C',0);
+$pdf->cell(30);
 $pdf->cell(14,5,'7 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
-$pdf->cell(104,5,'',0,0,'C',0);
-$pdf->cell(55);
+$pdf->cell(159);
 $pdf->cell(14,5,'6 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
@@ -528,38 +548,38 @@ $pdf->cell(49,5,'PARTIDA PRESUPUESTAL',1,0,'C',1);
 $pdf->cell(49,5,'ANTERIOR',1,0,'C',1);
 $pdf->cell(49,5,'ACTUAL',1,0,'C',1);
 $pdf->cell(48,5,'DIFERENCIA',1,1,'C',1);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
+$pdf->cell(49,5,'texto prueba partida',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba anterior',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba actual',1,0,'C',0);
+$pdf->cell(48,5,'texto prueba diferencia',1,1,'C',0);
+$pdf->cell(49,5,'texto prueba partida 2',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba anterior 2',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba actual 2',1,0,'C',0);
+$pdf->cell(48,5,'texto prueba diferencia 2',1,1,'C',0);
+$pdf->cell(49,5,'texto prueba partida 3',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba anterior 3',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba actual 3',1,0,'C',0);
+$pdf->cell(48,5,'texto prueba diferencia 3',1,1,'C',0);
+$pdf->cell(49,5,'texto prueba partida 4',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba anterior 4',1,0,'C',0);
+$pdf->cell(49,5,'texto prueba actual 4',1,0,'C',0);
+$pdf->cell(48,5,'texto prueba diferencia 4',1,1,'C',0);
 $pdf->ln(2);
 $pdf->cell(195,5,mb_convert_encoding('JUSTIFICACIÓN O MOTIVOS DEL MOVIMIENTO','ISO-8859-1','UTF-8'),1,1,'C',1);
-$pdf->cell(195,10,'',1,1,'L',0);
+$pdf->cell(195,10,'texto prueba de justificacion',1,1,'L',0);
 $pdf->ln(2);
 $pdf->cell(65,5,'AUTORIZA',0,0,'C',0);
 $pdf->cell(65,5,'AUTORIZA UNIDAD EXPEDIDORA',0,0,'C',0);
 $pdf->cell(65,5,mb_convert_encoding('AUTORIZA INGRESO SISTEMA DE NÓMINA','ISO-8859-1','UTF-8'),0,1,'C',0);
-$pdf->cell(65,15,'',0,0,'C',0);//espacio para colocar firma
-$pdf->cell(65,15,'',0,0,'C',0);//espacio para colocar firma
-$pdf->cell(65,15,'',0,1,'C',0);//espacio para colocar firma
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar nombre del empleado
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colcoar nombre de la unidad
-$pdf->cell(65,5,'',0,1,'C',0);//espacio para colocar nombre de sistema de nomina
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar puesto del empleado
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar puesto de la unidad expedidora
-$pdf->cell(65,5,'',0,1,'C',0);//espacio para colocar puesto del sistema de nómina
+$pdf->cell(65,15,'aqui va firma 1',0,0,'C',0);//espacio para colocar firma
+$pdf->cell(65,15,'aqui va firma 2',0,0,'C',0);//espacio para colocar firma
+$pdf->cell(65,15,'aqui va firma 3',0,1,'C',0);//espacio para colocar firma
+$pdf->cell(65,5,'aqui va nombre 1',0,0,'C',0);//espacio para colocar nombre del empleado
+$pdf->cell(65,5,'aqui va nombre 2',0,0,'C',0);//espacio para colcoar nombre de la unidad
+$pdf->cell(65,5,'aqui va nombre 3',0,1,'C',0);//espacio para colocar nombre de sistema de nomina
+$pdf->cell(65,5,'aqui va puesto 1',0,0,'C',0);//espacio para colocar puesto del empleado
+$pdf->cell(65,5,'aqui va puesto 2',0,0,'C',0);//espacio para colocar puesto de la unidad expedidora
+$pdf->cell(65,5,'aqui va puesto 3',0,1,'C',0);//espacio para colocar puesto del sistema de nómina
 $pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
 $pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
 $pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,1,'C',0);
@@ -596,13 +616,7 @@ $pdf->Line(162,228.5,162,244);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0,0,0);
 $pdf->Line(10,240,123,240);
-//lineas dentro del recuadro para dia mes y año, donde esta género
-$pdf->SetLineWidth(0.3);
-$pdf->SetDrawColor(0,0,0);
-$pdf->Line(153,93,177,93);
-$pdf->SetLineWidth(0.3);
-$pdf->SetDrawColor(0,0,0);
-$pdf->Line(153,96.3,205,96.3);
+
 
 $pdf->Output('Formato.pdf','I');
 ?>
