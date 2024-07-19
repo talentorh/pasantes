@@ -8,7 +8,7 @@ $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
 $conexion->beginTransaction();
 
-$sql = $conexion->prepare("SELECT * FROM descripcionmetas2023  WHERE id_empleado = :id_empleado");//le puse el nombre de esta tabla pero le vo a corregir el nombre para que los datos se puedan extraer correctamente y poder mostrar los datos de la tabla adecuada en el pdf
+$sql = $conexion->prepare("SELECT * FROM   WHERE id_empleado = :id_empleado");//le puse el nombre de esta tabla pero le vo a corregir el nombre para que los datos se puedan extraer correctamente y poder mostrar los datos de la tabla adecuada en el pdf
 $sql->execute(
     array(
         ':id_empleado' => $id_empleado
