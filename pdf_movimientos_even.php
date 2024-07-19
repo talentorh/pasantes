@@ -1,9 +1,8 @@
 <?php
-
 require 'fpdf186/fpdf.php';
 
 class PDF extends FPDF{
-       
+
 }
 
 $pdf = new PDF("P", "mm", array(215,350));
@@ -53,7 +52,7 @@ $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(100, 29, 190, 29);//linea lugar y fecha dentro  del recuadro de formato
 $pdf->cell(12);
 $pdf->cell(120,1,'',0,1,'C',0);
-$pdf->SetFillColor(7,122,245);
+$pdf->SetFillColor(255,0,201);//color rosa
 $pdf->SetFont('Arial','B',6);
 $pdf->SetLineWidth(0.3); 
 $pdf->cell(195,3,'DATOS PERSONALES',1,1,'C',1);
@@ -66,7 +65,7 @@ $pdf->cell(70);
 $pdf->cell(8,5,'CURP',0,1,'L',0);
 $pdf->cell(1);
 $pdf->SetFont('Arial','B',7.5);
-$rfc = "VAAA920508253";
+$rfc = "VAAA920508253"; //aqui se sustituye por el valor de la base de datos
 $digitos = str_split($rfc);
 $cellWidth = 6;
 $cellHeight = 4; 
@@ -76,7 +75,7 @@ foreach ($digitos as $digito) {
 }
 $pdf->cell(7);
 //código para poder extraer cada digito del curp y poder colocar cada digito en cada recuadro
-$curp = "VAAA920508HDFZRL03";
+$curp = "VAAA920508HDFZRL03"; //aquí se sustituye por el valor de la base de datos
 $digitos = str_split($curp);
 $cellWidth = 6;
 $cellHeight = 4;
@@ -212,12 +211,12 @@ $pdf->cell(40,5,'ANTECEDENTE',1,0,'L',1);
 $pdf->cell(10,5,'A. P',1,0,'C',1);
 $pdf->cell(13,5,'UNIDAD',1,0,'C',1);
 $pdf->cell(15,5,'PARTIDA',1,0,'C',1);
-$pdf->cell(15,5,mb_convert_encoding('CÓDIGO','ISO-8859-1','UTF-8'),1,0,'C',1);
-$pdf->cell(10,5,'P. A',1,0,'C',1);
+$pdf->cell(15,5,'CODIGO',1,0,'C',1);
+$pdf->cell(10,5,'P. g',1,0,'C',1);
 $pdf->cell(10,5,'A. I',1,0,'C',1);
-$pdf->cell(10,5,'G. P',1,0,'C',1);
-$pdf->cell(21,5,mb_convert_encoding('FUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
-$pdf->cell(21,5,mb_convert_encoding('SUBFUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
+$pdf->cell(10,5,'G. F',1,0,'C',1);
+$pdf->cell(21,5,'FUNCION',1,0,'C',1);
+$pdf->cell(21,5,'SUBFUNCION',1,0,'C',1);
 $pdf->cell(30,5,'PUESTO',1,1,'C',1);
 $pdf->cell(40,5,'CLAVE ANTERIOR',1,0,'L',0);
 $pdf->SetLineWidth(0.3);
@@ -243,7 +242,7 @@ $pdf->cell(30,5,'',1,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(45,119,175,119);//linea de adscripcion
-$pdf->cell(30,5,mb_convert_encoding('ADSCRIPCIÓN','ISO-8859-1','UTF-8'),0,1,'C',0);
+$pdf->cell(30,5,'ADSCRIPCION',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(45,124,175,124);//linea de clave anterior
@@ -273,7 +272,7 @@ $pdf->SetLineWidth(0);
 $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(10,132,205,132);//linea arriba recuadro datos del sustituto
-$pdf->cell(35,3,'DATOS DEL SUSTITUTO',0,1,'L',0);
+$pdf->cell(35,3,'DATOS DEL SUSTITUIDO',0,1,'L',0);
 $pdf->cell(62,5,'',0,0,'C',0);
 $pdf->cell(5);
 $pdf->cell(62,5,'',0,0,'C',0);
@@ -294,7 +293,7 @@ $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(144, 139, 205, 139);//linea de nombre
 $pdf->cell(63,1,'NOMBRE(S)',0,1,'C',0);
 $pdf->Ln(1);
-$pdf->cell(20,5,mb_convert_encoding('FILIACIÓN','ISO-8859-1','UTF-8'),0,0,'L',0);
+$pdf->cell(20,5,'FILIACION',0,0,'L',0);
 $pdf->cell(5);
 $pdf->SetLineWidth(0.3); 
 $pdf->cell(6,5,'',1,0,'C',0);
