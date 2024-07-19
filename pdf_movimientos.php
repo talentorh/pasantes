@@ -7,7 +7,7 @@ class PDF extends FPDF{
     
 }
 
-$pdf = new PDF("P", "mm", array(215,350));
+$pdf = new PDF("P", "mm", array(215,335));
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetLineWidth(0.3);
@@ -249,15 +249,15 @@ $pdf->cell(21,5,mb_convert_encoding('FUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
 $pdf->cell(21,5,mb_convert_encoding('SUBFUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
 $pdf->cell(30,5,'PUESTO',1,1,'C',1);
 $pdf->cell(40,5,'CLAVE ANTERIOR',1,0,'L',0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,180,10,197);
+$pdf->Line(10,180,10,202);
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,197,205,197);
+$pdf->Line(10,202,205,202);
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(205,180,205,197);
 $pdf->SetLineWidth(0);
@@ -349,10 +349,7 @@ $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(69);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(172, 213, 205, 213);
-$pdf->SetLineWidth(0);
+
 
 $pdf->cell(15,5,'MOTIVO',0,1,'C',0);
 $pdf->SetLineWidth(0.3);
@@ -438,6 +435,7 @@ $pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
 $pdf->Line(205,252,205,270);
 $pdf->SetLineWidth(0);
+
 $pdf->ln(-6);
 $pdf->cell(21);
 $pdf->cell(15,6,mb_convert_encoding('CÓDIGO','ISO-8859-1','UTF-8'),1,0,'C',0);
@@ -523,21 +521,29 @@ $pdf->cell(7,5,'',1,1,'C',0);
 
 
 $pdf->ln(1);
-$pdf->SetFont('Arial','B',8);
-$pdf->cell(195,5,'CLAVE PRESUPUESTAS',1,1,'C',1);
-$pdf->SetFont('Arial','',8);
-$pdf->cell(22,5,'AP',1,0,'C',1);
-$pdf->cell(22,5,'UNIDAD',1,0,'C',1);
-$pdf->cell(22,5,'PARTIDA',1,0,'C',1);
-$pdf->cell(22,5,mb_convert_encoding('CÓDIGO','ISO-8859-1','UTF-8'),1,0,'C',1);
-$pdf->cell(22,5,'PN',1,0,'C',1);
-$pdf->cell(21,5,'DF',1,0,'C',1);
-$pdf->cell(21,5,mb_convert_encoding('FUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
-$pdf->cell(21,5,mb_convert_encoding('SUBFUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
-$pdf->cell(22,5,'PUESTO',1,1,'C',1);
-$pdf->cell(44,5,'CLAVE DE RESPONSABILIDAD',0,0,'L',0);
-$pdf->cell(108);
-$pdf->cell(43,5,'HORARIO ASIGNADO',1,1,'C',0);
+$pdf->SetFont('Arial','B',6);
+$pdf->cell(195,3,'CLAVE PRESUPUESTAL',1,1,'C',1);
+$pdf->cell(22,3,'AP',1,0,'C',1);
+$pdf->cell(22,3,'UNIDAD',1,0,'C',1);
+$pdf->cell(22,3,'PARTIDA',1,0,'C',1);
+$pdf->cell(22,3,mb_convert_encoding('CÓDIGO','ISO-8859-1','UTF-8'),1,0,'C',1);
+$pdf->cell(22,3,'PN',1,0,'C',1);
+$pdf->cell(21,3,'DF',1,0,'C',1);
+$pdf->cell(21,3,mb_convert_encoding('FUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
+$pdf->cell(21,3,mb_convert_encoding('SUBFUNCIÓN','ISO-8859-1','UTF-8'),1,0,'C',1);
+$pdf->cell(22,3,'PUESTO',1,1,'C',1);
+$pdf->cell(22,5,'',1,0,'C',0);
+$pdf->cell(22,5,'',1,0,'C',0);
+$pdf->cell(22,5,'',1,0,'C',0);
+$pdf->cell(22,5,'',1,0,'C',0);
+$pdf->cell(22,5,'',1,0,'C',0);
+$pdf->cell(21,5,'',1,0,'C',0);
+$pdf->cell(21,5,'',1,0,'C',0);
+$pdf->cell(21,5,'',1,0,'C',0);
+$pdf->cell(22,5,'',1,1,'C',0);
+$pdf->Ln(5);
+$pdf->cell(44,3,'CLAVE DE RESPONSABILIDAD',0,0,'L',0);
+$pdf->Ln(0);
 $pdf->cell(44);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
@@ -549,12 +555,14 @@ $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(55);
+$pdf->Ln(-5);
+$pdf->cell(152);
+$pdf->cell(43,5,'HORARIO ASIGNADO',1,1,'C',0);
+$pdf->cell(159);
 $pdf->cell(14,5,'8 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
-$pdf->cell(35,5,'NOMBRE DEL PUESTO',0,0,'L',0);
-$pdf->cell(124);
+$pdf->cell(159);
 $pdf->cell(14,5,'7 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
@@ -567,95 +575,109 @@ $pdf->cell(55);
 $pdf->cell(14,5,'6 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
-$pdf->ln(6);
-$pdf->SetFont('Arial','B',8);
-$pdf->cell(195,5,'PERCEPCIONES',1,1,'C',1);
-$pdf->SetFont('Arial','',8);
-$pdf->cell(49,5,'PARTIDA PRESUPUESTAL',1,0,'C',1);
-$pdf->cell(49,5,'ANTERIOR',1,0,'C',1);
-$pdf->cell(49,5,'ACTUAL',1,0,'C',1);
-$pdf->cell(48,5,'DIFERENCIA',1,1,'C',1);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(49,5,'',1,0,'C',0);
-$pdf->cell(48,5,'',1,1,'C',0);
+$pdf->Ln(-5);
+$pdf->cell(35,5,'NOMBRE DEL PUESTO',0,0,'L',0);
+$pdf->SetLineWidth(0.3);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10,236,100,236);
+
+$pdf->SetLineWidth(0.3);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10,214,10,237);
+$pdf->SetLineWidth(0);
+
+$pdf->SetLineWidth(0.3);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(162,213,162,237);
+$pdf->SetLineWidth(0);
+
+$pdf->SetLineWidth(0.3);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(205,213,205,237);
+$pdf->SetLineWidth(0);
+
+$pdf->SetLineWidth(0.3);
+$pdf->SetDrawColor(0, 0, 0);
+$pdf->Line(10,237.5,205,237.5);
+$pdf->SetLineWidth(0);
+
+
+
+
+$pdf->ln(10);
+$pdf->SetFont('Arial','B',6);
+$pdf->cell(195,3,'PERCEPCIONES',1,1,'C',1);
+$pdf->cell(49,3,'PARTIDA PRESUPUESTAL',1,0,'C',1);
+$pdf->cell(49,3,'ANTERIOR',1,0,'C',1);
+$pdf->cell(49,3,'ACTUAL',1,0,'C',1);
+$pdf->cell(48,3,'DIFERENCIA',1,1,'C',1);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(48,4,'',1,1,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(48,4,'',1,1,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(48,4,'',1,1,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(49,4,'',1,0,'C',0);
+$pdf->cell(48,4,'',1,1,'C',0);
 $pdf->ln(3);
-$pdf->SetFont('Arial','B',8);
-$pdf->cell(195,5,mb_convert_encoding('JUSTIFICACIÓN O MOTIVOS DEL MOVIMIENTO','ISO-8859-1','UTF-8'),1,1,'C',1);
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','B',6);
+$pdf->cell(195,3,mb_convert_encoding('JUSTIFICACIÓN O MOTIVOS DEL MOVIMIENTO','ISO-8859-1','UTF-8'),1,1,'C',1);
 $pdf->cell(195,10,'',1,1,'L',0);
-$pdf->cell(65,5,'AUTORIZA',0,0,'C',0);
+$pdf->SetFont('Arial','',6);
+
+$pdf->ln(5);
+$pdf->cell(55,5,'AUTORIZA',0,0,'C',0);
 $pdf->cell(65,5,'AUTORIZA UNIDAD EXPEDIDORA',0,0,'C',0);
 $pdf->cell(65,5,mb_convert_encoding('AUTORIZA INGRESO SISTEMA DE NÓMINA','ISO-8859-1','UTF-8'),0,1,'C',0);
-$pdf->cell(65,15,'',0,0,'C',0);//espacio para colocar firma
-$pdf->cell(65,15,'',0,0,'C',0);//espacio para colocar firma
-$pdf->cell(65,15,'',0,1,'C',0);//espacio para colocar firma
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar nombre del empleado
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colcoar nombre de la unidad
-$pdf->cell(65,5,'',0,1,'C',0);//espacio para colocar nombre de sistema de nomina
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar puesto del empleado
-$pdf->cell(65,5,'',0,0,'C',0);//espacio para colocar puesto de la unidad expedidora
-$pdf->cell(65,5,'',0,1,'C',0);//espacio para colocar puesto del sistema de nómina
-$pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colocar firma
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colocar firma
+$pdf->cell(60,7,'',0,1,'C',0);//espacio para colocar firma
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colocar nombre del empleado
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colcoar nombre de la unidad
+$pdf->cell(60,7,'',0,1,'C',0);//espacio para colocar nombre de sistema de nomina
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colocar puesto del empleado
+$pdf->cell(60,7,'',0,0,'C',0);//espacio para colocar puesto de la unidad expedidora
+$pdf->cell(60,7,'',0,1,'C',0);//espacio para colocar puesto del sistema de nómina
+$pdf->cell(55,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
 $pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
 $pdf->cell(65,5,'NOMBRE, CARGO Y FIRMA',0,0,'C',0);
 //lineas
-/*$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,29,10,55);
+$pdf->Line(10,315,205,315);
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(205,29,205,55);
+$pdf->Line(10,280,205,280);
+
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,55,205,55);
+$pdf->Line(10,315,10,280);
+
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,67,10,90);
+$pdf->Line(70,315,70,280);
+
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(205,67,205,90);
+$pdf->Line(130,315,130,280);
+
 $pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
+$pdf->SetLineWidth(0.3);
 $pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,90,205,90);
-$pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,141,10,175);
-$pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(205,141,205,175);
-$pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(10,175,205,175);
-$pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(75,141,75,175);
-$pdf->SetLineWidth(0);
-$pdf->SetLineWidth(0.5);
-$pdf->SetDrawColor(0, 0, 0);
-$pdf->Line(140,141,140,175);
-$pdf->SetLineWidth(0);*/
+$pdf->Line(205,315,205,280);
+
 
 $pdf->Output('Formato.pdf','I');
 ?>
