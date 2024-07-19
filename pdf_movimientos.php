@@ -6,7 +6,7 @@ class PDF extends FPDF{
        
 }
 
-$pdf = new PDF("P", "mm", array(215,350));
+$pdf = new PDF("P", "mm", array(215,335));
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetLineWidth(0.3);
@@ -528,13 +528,15 @@ $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
 $pdf->cell(6,5,'',1,0,'C',0);
-$pdf->cell(55);
+$pdf->Ln(-5);
+$pdf->cell(152);
+$pdf->cell(43,5,'HORARIO ASIGNADO',1,1,'C',0);
+$pdf->cell(159);
 $pdf->cell(14,5,'8 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
-$pdf->cell(25,5,'NOMBRE DEL PUESTO',0,0,'L',0);
-$pdf->cell(104,5,'texto prueba nombre',0,0,'C',0);
-$pdf->cell(30);
+$pdf->cell(35,5,'NOMBRE DEL PUESTO',0,0,'L',0);
+$pdf->cell(124);
 $pdf->cell(14,5,'7 HORAS',0,0,'C',0);
 $pdf->cell(8);
 $pdf->cell(6,5,'',1,1,'C',0);
